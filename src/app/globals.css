@@ -36,20 +36,21 @@
   --color-current: currentColor;
   --color-transparent: transparent;
   --color-white: #ffffff;
-  --color-black: #101828;
+  --color-black: #050B14; /* Vaulltcore Obsidian */
 
-  --color-brand-25: #f2f7ff;
-  --color-brand-50: #ecf3ff;
-  --color-brand-100: #dde9ff;
-  --color-brand-200: #c2d6ff;
-  --color-brand-300: #9cb9ff;
-  --color-brand-400: #7592ff;
-  --color-brand-500: #465fff;
-  --color-brand-600: #3641f5;
-  --color-brand-700: #2a31d8;
-  --color-brand-800: #252dae;
-  --color-brand-900: #262e89;
-  --color-brand-950: #161950;
+  /* Vaulltcore Sovereign Gold (Replaces primary blue) */
+  --color-brand-25: #fffdf5;
+  --color-brand-50: #fdf8eb;
+  --color-brand-100: #f9eed1;
+  --color-brand-200: #f3dcab;
+  --color-brand-300: #ecc377;
+  --color-brand-400: #e6aa4e;
+  --color-brand-500: #d4af37; /* Core Gold */
+  --color-brand-600: #b88a23;
+  --color-brand-700: #94671f;
+  --color-brand-800: #79521e;
+  --color-brand-900: #64441d;
+  --color-brand-950: #39240e;
 
   --color-blue-light-25: #f5fbff;
   --color-blue-light-50: #f0f9ff;
@@ -64,6 +65,7 @@
   --color-blue-light-900: #0b4a6f;
   --color-blue-light-950: #062c41;
 
+  /* Vaulltcore Institutional Grays (Navy/Obsidian into dark mode) */
   --color-gray-25: #fcfcfd;
   --color-gray-50: #f9fafb;
   --color-gray-100: #f2f4f7;
@@ -72,11 +74,11 @@
   --color-gray-400: #98a2b3;
   --color-gray-500: #667085;
   --color-gray-600: #475467;
-  --color-gray-700: #344054;
-  --color-gray-800: #1d2939;
-  --color-gray-900: #101828;
-  --color-gray-950: #0c111d;
-  --color-gray-dark: #1a2231;
+  --color-gray-700: #284168;
+  --color-gray-800: #1C3050;
+  --color-gray-900: #0A1628; /* Deep Navy Base */
+  --color-gray-950: #050B14; /* Obsidian */
+  --color-gray-dark: #0A1628;
 
   --color-orange-25: #fffaf5;
   --color-orange-50: #fff6ed;
@@ -91,18 +93,19 @@
   --color-orange-900: #7e2410;
   --color-orange-950: #511c10;
 
-  --color-success-25: #f6fef9;
-  --color-success-50: #ecfdf3;
-  --color-success-100: #d1fadf;
-  --color-success-200: #a6f4c5;
-  --color-success-300: #6ce9a6;
-  --color-success-400: #32d583;
-  --color-success-500: #12b76a;
-  --color-success-600: #039855;
-  --color-success-700: #027a48;
-  --color-success-800: #05603a;
-  --color-success-900: #054f31;
-  --color-success-950: #053321;
+  /* Vaulltcore Indicator Green */
+  --color-success-25: #f0fdf9;
+  --color-success-50: #e0fcf4;
+  --color-success-100: #b3f8e2;
+  --color-success-200: #80f3ce;
+  --color-success-300: #4dedb9;
+  --color-success-400: #26e8a9;
+  --color-success-500: #00c48c; /* Core Indicator */
+  --color-success-600: #009e71;
+  --color-success-700: #007a57;
+  --color-success-800: #005c42;
+  --color-success-900: #00402e;
+  --color-success-950: #00241a;
 
   --color-error-25: #fffbfa;
   --color-error-50: #fef3f2;
@@ -148,7 +151,7 @@
     0px 20px 24px -4px rgba(16, 24, 40, 0.08),
     0px 8px 8px -4px rgba(16, 24, 40, 0.03);
   --shadow-datepicker: -5px 0 0 #262d3c, 5px 0 0 #262d3c;
-  --shadow-focus-ring: 0px 0px 0px 4px rgba(70, 95, 255, 0.12);
+  --shadow-focus-ring: 0px 0px 0px 4px rgba(212, 175, 55, 0.12); /* Adjusted focus ring to Gold */
   --shadow-slider-navigation:
     0px 1px 2px 0px rgba(16, 24, 40, 0.1), 0px 1px 3px 0px rgba(16, 24, 40, 0.1);
   --shadow-tooltip:
@@ -467,13 +470,13 @@ span.flatpickr-weekday,
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: #465fff;
+  background: var(--color-brand-500); /* Adjusted to reference the variable implicitly if needed, or directly below */
   @apply !border-brand-500 !bg-brand-500 hover:!border-brand-50 hover:!bg-brand-500;
 }
 .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n + 1)) {
-  box-shadow: -10px 0 0 #465fff;
+  box-shadow: -10px 0 0 #d4af37; /* Adjusted to Vaulltcore Gold */
 }
 
 .flatpickr-months .flatpickr-prev-month svg,
