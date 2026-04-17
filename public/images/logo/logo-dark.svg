@@ -1,4 +1,24 @@
 <svg width="190" height="32" viewBox="0 0 190 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* Default: Light Mode (Obsidian Text) */
+    .vc-text {
+      fill: #020617;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 19px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: fill 0.3s ease;
+    }
+
+    /* Logic: Dark Mode (Pure White Text) */
+    @media (prefers-color-scheme: dark) {
+      .vc-text {
+        fill: #FFFFFF;
+      }
+    }
+  </style>
+
   <defs>
     <linearGradient id="sovereign-gold" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
       <stop stop-color="#F59E0B" />
@@ -9,23 +29,19 @@
   <g>
     <path d="M16 2L28.1244 9V23L16 30L3.87564 23V9L16 2Z" 
           stroke="url(#sovereign-gold)" 
-          fill="none" 
           stroke-width="2.5" 
-          stroke-linejoin="round"/>
+          stroke-linejoin="round"
+          fill="none" />
           
     <path d="M10 12L16 22L22 12" 
           stroke="url(#sovereign-gold)" 
-          fill="none" 
           stroke-width="3" 
           stroke-linecap="square" 
-          stroke-linejoin="miter"/>
+          stroke-linejoin="miter"
+          fill="none" />
           
     <circle cx="16" cy="12" r="1.5" fill="url(#sovereign-gold)" />
   </g>
 
-  <text x="42" y="23" 
-        fill="#020617" 
-        style="font-family: system-ui, -apple-system, sans-serif; font-weight: 900; font-size: 19px; letter-spacing: 0.12em; text-transform: uppercase;">
-    VAULLTCORE
-  </text>
+  <text x="42" y="23" class="vc-text">VAULLTCORE</text>
 </svg>
