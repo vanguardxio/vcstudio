@@ -116,7 +116,6 @@ export default function UserDropdown() {
               tag="a"
               href="/profile"
               className="flex items-center gap-3 px-3 py-2.5 font-bold uppercase tracking-wide text-xs text-gray-700 rounded-xl group hover:bg-gray-50 hover:text-brand-600 dark:text-gray-300 dark:hover:bg-white/[0.02] dark:hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-              role="menuitem"
             >
               <Terminal size={16} className="text-gray-400 group-hover:text-brand-500 transition-colors" />
               Operator Credentials
@@ -128,7 +127,6 @@ export default function UserDropdown() {
               tag="a"
               href="/security"
               className="flex items-center gap-3 px-3 py-2.5 font-bold uppercase tracking-wide text-xs text-gray-700 rounded-xl group hover:bg-gray-50 hover:text-brand-600 dark:text-gray-300 dark:hover:bg-white/[0.02] dark:hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-              role="menuitem"
             >
               <Fingerprint size={16} className="text-gray-400 group-hover:text-brand-500 transition-colors" />
               Cryptographic Keys
@@ -140,7 +138,6 @@ export default function UserDropdown() {
               tag="a"
               href="/support"
               className="flex items-center gap-3 px-3 py-2.5 font-bold uppercase tracking-wide text-xs text-gray-700 rounded-xl group hover:bg-gray-50 hover:text-brand-600 dark:text-gray-300 dark:hover:bg-white/[0.02] dark:hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-              role="menuitem"
             >
               <ShieldCheck size={16} className="text-gray-400 group-hover:text-brand-500 transition-colors" />
               Secure Protocol Support
@@ -152,7 +149,6 @@ export default function UserDropdown() {
         <Link
           href="/signin"
           className="flex items-center gap-3 px-3 py-3 mt-2 font-bold uppercase tracking-wide text-xs text-red-600 rounded-xl group hover:bg-red-50 dark:text-red-500 dark:hover:bg-red-500/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
-          role="menuitem"
         >
           <LogOut size={16} className="text-red-500 group-hover:translate-x-1 transition-transform" />
           Terminate Session
