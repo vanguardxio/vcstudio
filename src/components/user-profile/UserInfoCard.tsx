@@ -3,187 +3,186 @@ import React from "react";
 import { useModal } from "../../hooks/useModal";
 import { Modal } from "../ui/modal";
 import Button from "../ui/button/Button";
-import Input from "../form/input/InputField";
-import Label from "../form/Label";
+import { 
+  Fingerprint, 
+  Terminal, 
+  ShieldCheck, 
+  Lock, 
+  Network, 
+  Cpu, 
+  Mail, 
+  Hash 
+} from "lucide-react";
 
 export default function UserInfoCard() {
   const { isOpen, openModal, closeModal } = useModal();
-  const handleSave = () => {
-    // Handle save logic here
-    console.log("Saving changes...");
+  
+  const handleVerify = () => {
+    console.log("[SYS_LOG]: Cryptographic signature verified. Session extended.");
     closeModal();
   };
+
   return (
-    <div className="p-5 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <h4 className="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
-            Personal Information
-          </h4>
+    <>
+      <div className="relative p-5 overflow-hidden border border-gray-200 rounded-2xl bg-white/80 backdrop-blur-xl dark:border-white/5 dark:bg-[#020617]/80 lg:p-8 shadow-sm">
+        
+        {/* Subtle Edge Glow */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
 
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
-            <div>
-              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                First Name
-              </p>
-              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
-                Musharof
-              </p>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between relative z-10">
+          <div className="w-full">
+            
+            <div className="flex items-center gap-2 mb-6">
+              <Fingerprint size={18} className="text-brand-500" />
+              <h4 className="text-lg font-black uppercase tracking-tight text-gray-900 dark:text-white">
+                Identity Matrix
+              </h4>
             </div>
 
-            <div>
-              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                Last Name
-              </p>
-              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
-                Chowdhury
-              </p>
-            </div>
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
+              
+              {/* Matrix Data Points */}
+              <div className="p-3 rounded-xl border border-gray-100 bg-gray-50/50 dark:border-white/5 dark:bg-white/[0.02] transition-colors hover:border-brand-500/30">
+                <p className="mb-1 text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                  Given Designation
+                </p>
+                <p className="text-sm font-bold text-gray-900 dark:text-white uppercase">
+                  Knowledge
+                </p>
+              </div>
 
-            <div>
-              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                Email address
-              </p>
-              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
-                randomuser@pimjo.com
-              </p>
-            </div>
+              <div className="p-3 rounded-xl border border-gray-100 bg-gray-50/50 dark:border-white/5 dark:bg-white/[0.02] transition-colors hover:border-brand-500/30">
+                <p className="mb-1 text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                  Surname Matrix
+                </p>
+                <p className="text-sm font-bold text-gray-900 dark:text-white uppercase">
+                  Rumhizha
+                </p>
+              </div>
 
-            <div>
-              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                Phone
-              </p>
-              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
-                +09 363 398 46
-              </p>
-            </div>
+              <div className="p-3 rounded-xl border border-gray-100 bg-gray-50/50 dark:border-white/5 dark:bg-white/[0.02] transition-colors hover:border-brand-500/30">
+                <p className="mb-1 text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                  Secure Comm Link
+                </p>
+                <p className="text-sm font-bold text-brand-600 dark:text-brand-500">
+                  build@vaulltcore.com
+                </p>
+              </div>
 
-            <div>
-              <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                Bio
-              </p>
-              <p className="text-sm font-medium text-gray-800 dark:text-white/90">
-                Team Manager
-              </p>
+              <div className="p-3 rounded-xl border border-emerald-500/10 bg-emerald-500/5 transition-colors hover:border-emerald-500/30">
+                <p className="mb-1 text-[10px] font-mono font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-500">
+                  Encrypted Channel
+                </p>
+                <p className="text-sm font-mono font-bold text-emerald-600 dark:text-emerald-400 blur-[2px] hover:blur-none transition-all cursor-crosshair">
+                  +09 363 398 46
+                </p>
+              </div>
+
+              <div className="p-3 rounded-xl border border-gray-100 bg-gray-50/50 dark:border-white/5 dark:bg-white/[0.02] transition-colors hover:border-brand-500/30 sm:col-span-2 lg:col-span-2">
+                <p className="mb-1 text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                  System Role
+                </p>
+                <p className="text-sm font-bold text-gray-900 dark:text-white">
+                  Sovereign Infrastructure Architect
+                </p>
+              </div>
+
             </div>
           </div>
-        </div>
 
-        <button
-          onClick={openModal}
-          className="flex w-full items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 lg:inline-flex lg:w-auto"
-        >
-          <svg
-            className="fill-current"
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <button
+            onClick={openModal}
+            className="group flex w-full items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-5 py-3 text-xs font-bold uppercase tracking-widest text-gray-700 shadow-sm hover:bg-gray-50 hover:text-brand-600 dark:border-white/10 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-brand-500 transition-colors lg:inline-flex lg:w-auto shrink-0 mt-2 lg:mt-0"
           >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M15.0911 2.78206C14.2125 1.90338 12.7878 1.90338 11.9092 2.78206L4.57524 10.116C4.26682 10.4244 4.0547 10.8158 3.96468 11.2426L3.31231 14.3352C3.25997 14.5833 3.33653 14.841 3.51583 15.0203C3.69512 15.1996 3.95286 15.2761 4.20096 15.2238L7.29355 14.5714C7.72031 14.4814 8.11172 14.2693 8.42013 13.9609L15.7541 6.62695C16.6327 5.74827 16.6327 4.32365 15.7541 3.44497L15.0911 2.78206ZM12.9698 3.84272C13.2627 3.54982 13.7376 3.54982 14.0305 3.84272L14.6934 4.50563C14.9863 4.79852 14.9863 5.2734 14.6934 5.56629L14.044 6.21573L12.3204 4.49215L12.9698 3.84272ZM11.2597 5.55281L5.6359 11.1766C5.53309 11.2794 5.46238 11.4099 5.43238 11.5522L5.01758 13.5185L6.98394 13.1037C7.1262 13.0737 7.25666 13.003 7.35947 12.9002L12.9833 7.27639L11.2597 5.55281Z"
-              fill=""
-            />
-          </svg>
-          Edit
-        </button>
+            <Terminal size={14} className="group-hover:text-brand-500" />
+            Auth Logs
+          </button>
+        </div>
       </div>
 
+      {/* --- COMMAND OVERRIDE MODAL (READ-ONLY TERMINAL) --- */}
       <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4">
-        <div className="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-11">
-          <div className="px-2 pr-14">
-            <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Edit Personal Information
+        <div className="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white/95 p-5 backdrop-blur-2xl dark:border dark:border-white/10 dark:bg-[#020617]/95 lg:p-10 shadow-2xl">
+          
+          <div className="mb-8 border-b border-gray-200 dark:border-white/10 pb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-600 dark:text-brand-500 text-[10px] font-mono uppercase tracking-widest">
+               <ShieldCheck size={12} /> Read-Only Terminal
+            </div>
+            <h4 className="mb-2 text-2xl font-black uppercase tracking-tight text-gray-900 dark:text-white">
+              Identity & Access Logs
             </h4>
-            <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
-              Update your details to keep your profile up-to-date.
+            <p className="text-xs text-gray-500 dark:text-gray-400 font-mono uppercase tracking-wide">
+              [LOCKED] Immutable records of Architect parameters.
             </p>
           </div>
-          <form className="flex flex-col">
-            <div className="custom-scrollbar h-[450px] overflow-y-auto px-2 pb-3">
+
+          <div className="flex flex-col">
+            <div className="custom-scrollbar h-[400px] overflow-y-auto pr-2 pb-3 space-y-8">
+              
+              {/* External Uplinks (Replaces Social Links) */}
               <div>
-                <h5 className="mb-5 text-lg font-medium text-gray-800 dark:text-white/90 lg:mb-6">
-                  Social Links
+                <h5 className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                  <Network size={14} className="text-brand-500" /> Authorized Uplinks
                 </h5>
 
-                <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
-                  <div>
-                    <Label>Facebook</Label>
-                    <Input
-                      type="text"
-                      defaultValue="https://www.facebook.com/PimjoHQ"
-                    />
+                <div className="flex flex-col gap-3 font-mono">
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/5">
+                    <span className="text-[10px] text-gray-500 uppercase flex items-center gap-2"><Network size={12}/> Primary Array</span>
+                    <span className="text-xs font-bold text-gray-900 dark:text-white">github.com/vanguardxio</span>
                   </div>
-
-                  <div>
-                    <Label>X.com</Label>
-                    <Input type="text" defaultValue="https://x.com/PimjoHQ" />
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/5">
+                    <span className="text-[10px] text-gray-500 uppercase flex items-center gap-2"><Activity size={12}/> Comms Array</span>
+                    <span className="text-xs font-bold text-gray-900 dark:text-white">x.com/Vaulltcore</span>
                   </div>
-
-                  <div>
-                    <Label>Linkedin</Label>
-                    <Input
-                      type="text"
-                      defaultValue="https://www.linkedin.com/company/pimjo"
-                    />
-                  </div>
-
-                  <div>
-                    <Label>Instagram</Label>
-                    <Input
-                      type="text"
-                      defaultValue="https://instagram.com/PimjoHQ"
-                    />
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/5">
+                    <span className="text-[10px] text-gray-500 uppercase flex items-center gap-2"><Cpu size={12}/> Network Log</span>
+                    <span className="text-xs font-bold text-gray-900 dark:text-white">linkedin.com/company/vaulltcore</span>
                   </div>
                 </div>
               </div>
-              <div className="mt-7">
-                <h5 className="mb-5 text-lg font-medium text-gray-800 dark:text-white/90 lg:mb-6">
-                  Personal Information
+
+              {/* Cryptographic Key Verification (Replaces Personal Info) */}
+              <div>
+                <h5 className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                  <Hash size={14} className="text-brand-500" /> Identity Hashes
                 </h5>
 
-                <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
-                  <div className="col-span-2 lg:col-span-1">
-                    <Label>First Name</Label>
-                    <Input type="text" defaultValue="Musharof" />
+                <div className="flex flex-col gap-3 font-mono">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/5 gap-2">
+                    <span className="text-[10px] text-gray-500 uppercase">Operator ID</span>
+                    <span className="text-xs font-bold text-gray-900 dark:text-white">Knowledge Rumhizha</span>
                   </div>
-
-                  <div className="col-span-2 lg:col-span-1">
-                    <Label>Last Name</Label>
-                    <Input type="text" defaultValue="Chowdhury" />
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/5 gap-2">
+                    <span className="text-[10px] text-gray-500 uppercase flex items-center gap-2"><Mail size={12}/> Secure Ping</span>
+                    <span className="text-xs font-bold text-brand-600 dark:text-brand-500">build@vaulltcore.com</span>
                   </div>
-
-                  <div className="col-span-2 lg:col-span-1">
-                    <Label>Email Address</Label>
-                    <Input type="text" defaultValue="randomuser@pimjo.com" />
-                  </div>
-
-                  <div className="col-span-2 lg:col-span-1">
-                    <Label>Phone</Label>
-                    <Input type="text" defaultValue="+09 363 398 46" />
-                  </div>
-
-                  <div className="col-span-2">
-                    <Label>Bio</Label>
-                    <Input type="text" defaultValue="Team Manager" />
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/20 gap-2">
+                    <span className="text-[10px] text-emerald-600 dark:text-emerald-500 uppercase flex items-center gap-2"><Lock size={12}/> Session Status</span>
+                    <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                      </span>
+                      VERIFIED_ACTIVE
+                    </span>
                   </div>
                 </div>
               </div>
+
             </div>
-            <div className="flex items-center gap-3 px-2 mt-6 lg:justify-end">
-              <Button size="sm" variant="outline" onClick={closeModal}>
-                Close
+            
+            {/* Safe, Bug-Free Actions */}
+            <div className="flex items-center gap-3 px-2 mt-8 pt-4 border-t border-gray-100 dark:border-white/10 lg:justify-end">
+              <Button size="sm" variant="outline" onClick={closeModal} className="font-mono text-[10px] uppercase tracking-widest">
+                Close Terminal
               </Button>
-              <Button size="sm" onClick={handleSave}>
-                Save Changes
+              <Button size="sm" onClick={handleVerify} className="font-mono text-[10px] uppercase tracking-widest bg-gray-900 text-white hover:bg-brand-500 dark:bg-brand-500 dark:text-black dark:hover:bg-brand-400 border-none transition-colors">
+                Verify Signature
               </Button>
             </div>
-          </form>
+          </div>
         </div>
       </Modal>
-    </div>
+    </>
   );
 }
