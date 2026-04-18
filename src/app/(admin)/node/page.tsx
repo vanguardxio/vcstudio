@@ -9,7 +9,7 @@ import {
   Globe2, Server, Zap, Shield, Activity, MapPin, Radio, 
   ArrowRight, Power, Clock, Command, CheckCircle2, ChevronRight,
   Database, Network, Layers, Trophy, RefreshCw, PlayCircle, ShieldAlert,
-  BrainCircuit, Target, Users
+  BrainCircuit, Target, Users, AlertTriangle, TrendingDown, X
 } from "lucide-react";
 
 // --- Node Data for Intelligence Hover ---
@@ -29,6 +29,22 @@ export default function GlobalNodesCommandCenter() {
 
   const [activeNode, setActiveNode] = useState<NodeData | null>(null);
 
+  // === LIVE SYSTEM INTELLIGENCE STATE ===
+  const [reqPerSec, setReqPerSec]     = useState(2847392);
+  const [bandwidth, setBandwidth]     = useState(142.6);
+  const [incidents, setIncidents]     = useState(0);
+  const [regions, setRegions]         = useState(38);
+  const [threatsBlocked, setThreatsBlocked] = useState(1284);
+
+  useEffect(() => {
+    const ticker = setInterval(() => {
+      setReqPerSec(prev => prev + Math.floor(Math.random() * 4000 - 1800));
+      setBandwidth(prev => Math.max(120, Math.min(180, prev + (Math.random() * 4 - 2))));
+      setThreatsBlocked(prev => prev + (Math.random() > 0.6 ? 1 : 0));
+    }, 1800);
+    return () => clearInterval(ticker);
+  }, []);
+
   // Regional Routing Logs State
   const logAreaRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -47,9 +63,7 @@ export default function GlobalNodesCommandCenter() {
       if (!items.length) return;
       const log = fakeLogs[logIdx % fakeLogs.length];
       const now = new Date().toISOString().replace('T',' ').slice(0,19);
-      
       const last = items[items.length - 1] as HTMLElement;
-      
       const b = last.querySelector('.dash-log-badge');
       if (b) {
         if (log[0] === 'ROUTE') b.className = 'dash-log-badge px-1.5 py-0.5 text-[9px] font-bold tracking-wider rounded border bg-amber-500/20 text-amber-600 dark:text-amber-500 border-amber-500/30';
@@ -57,23 +71,19 @@ export default function GlobalNodesCommandCenter() {
         else b.className = 'dash-log-badge px-1.5 py-0.5 text-[9px] font-bold tracking-wider rounded border bg-slate-500/20 text-slate-700 dark:text-slate-300 border-slate-500/30';
         b.textContent = log[0];
       }
-      
       const spans = last.querySelectorAll('span');
       if (spans[1]) spans[1].textContent = now.split(' ')[1];
       if (spans[2]) spans[2].textContent = log[1];
-      
       logAreaRef.current.prepend(last);
       logIdx++;
     }, 2800);
     return () => clearInterval(interval);
   }, []);
 
-  // --- STRICT TYPESCRIPT LOCKS ---
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 20, scale: 0.98 },
     visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const } }
   };
-  
   const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
@@ -84,26 +94,52 @@ export default function GlobalNodesCommandCenter() {
       <div className="min-h-screen bg-slate-50 dark:bg-[#050B14] text-slate-900 dark:text-slate-50 font-sans selection:bg-amber-500/30 selection:text-amber-700 dark:selection:text-amber-400 transition-colors duration-500 relative overflow-hidden pb-24 md:pb-32">
         
         {/* Top Progress Bar */}
-        <m.div className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-slate-400 via-amber-400 to-amber-500 origin-left z-50 shadow-[0_0_15px_rgba(245,158,11,0.6)]" style={{ scaleX }} />
+        <m.div className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-slate-400 via-amber-400 to-amber-500 origin-left z-50 shadow-[0_0_15px_rgba(245,158,11,0.6)] will-change-transform" style={{ scaleX }} />
 
         {/* Global Noise Overlay */}
         <div className="fixed inset-0 z-0 pointer-events-none mix-blend-overlay opacity-[0.04] dark:opacity-[0.03]" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E')" }} />
 
         {/* Ambient GPU Glows */}
-        <div className="fixed top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-slate-400/20 dark:bg-slate-500/10 blur-[150px] pointer-events-none -z-10 transform-gpu" />
-        <div className="fixed bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-amber-500/15 dark:bg-amber-600/10 blur-[150px] pointer-events-none -z-10 transform-gpu" />
+        <div className="fixed top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-slate-400/20 dark:bg-slate-500/10 blur-[150px] pointer-events-none -z-10 transform-gpu will-change-transform" />
+        <div className="fixed bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-amber-500/15 dark:bg-amber-600/10 blur-[150px] pointer-events-none -z-10 transform-gpu will-change-transform" />
+        {/* NEW: Slow orbital ambient rotation */}
+        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140vw] h-[140vw] rounded-full border border-amber-500/[0.03] dark:border-amber-500/[0.05] pointer-events-none -z-10 animate-[spin_120s_linear_infinite]" />
+        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vw] rounded-full border border-slate-400/[0.04] dark:border-slate-500/[0.04] pointer-events-none -z-10 animate-[spin_90s_linear_infinite_reverse]" />
 
-        <main className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-28 md:pt-36">
+        {/* === SCARCITY BAR === */}
+        <div className="sticky top-0 z-40 w-full border-b border-amber-500/20 bg-amber-500/[0.06] dark:bg-amber-500/[0.04] backdrop-blur-xl">
+          <div className="max-w-7xl mx-auto px-4 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-3">
+              <span className="flex h-2 w-2 items-center justify-center rounded-full bg-amber-500/20">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
+              </span>
+              <span className="text-[9px] font-mono font-bold tracking-[0.2em] uppercase text-amber-700 dark:text-amber-500">
+                Private Builds: <span className="text-slate-900 dark:text-white">2 slots remaining this month</span>
+              </span>
+            </div>
+            <div className="flex items-center gap-6">
+              <span className="hidden sm:flex items-center gap-1.5 text-[9px] font-mono font-bold tracking-[0.2em] uppercase text-slate-500">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                {threatsBlocked.toLocaleString()} threats blocked today
+              </span>
+              <span className="text-[9px] font-mono font-bold tracking-[0.2em] uppercase text-slate-500">
+                Application only · No walk-ins
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <main className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 pt-16 md:pt-24">
           
           {/* ========================================================================= */}
           {/* LAYER 1: IDENTITY & SCALE                                                  */}
           {/* ========================================================================= */}
-          <m.header initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 relative">
+          <m.header initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 md:mb-20 relative">
             <div className="flex-1">
               <m.div variants={fadeUp} className="inline-flex items-center gap-3 px-4 py-2 border border-slate-300 dark:border-white/10 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md rounded-full mb-6 shadow-sm w-fit">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
                 <span className="text-[10px] md:text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 font-bold">
-                  Global Edge Network
+                  Your Private Sovereign Edge Network
                 </span>
               </m.div>
               
@@ -114,21 +150,42 @@ export default function GlobalNodesCommandCenter() {
                 </span>
               </m.h1>
 
-              {/* NEW: Trust Proof Strip ($$$ Signal) */}
-              <m.div variants={fadeUp} className="flex flex-wrap gap-4 md:gap-8 text-[9px] md:text-[10px] font-mono uppercase tracking-widest font-bold text-slate-600 dark:text-slate-400 mt-8 border-t border-slate-300 dark:border-white/10 pt-6">
+              {/* === NEW: REVENUE LANGUAGE SUBHEAD === */}
+              <m.p variants={fadeUp} className="text-sm md:text-base font-medium text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-6">
+                Every 100ms of delay costs you revenue. Every outage loses trust. Every weak server leaks authority.
+                <span className="text-slate-900 dark:text-white font-bold"> This infrastructure protects all three.</span>
+              </m.p>
+
+              {/* Trust Proof Strip */}
+              <m.div variants={fadeUp} className="flex flex-wrap gap-4 md:gap-8 text-[9px] md:text-[10px] font-mono uppercase tracking-widest font-bold text-slate-600 dark:text-slate-400 mt-6 border-t border-slate-300 dark:border-white/10 pt-6">
                 <span className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-amber-500"/> 99.999% Uptime SLA</span>
-                <span className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-amber-500"/> ISO 27001 Ready</span>
-                <span className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-amber-500"/> GDPR Compliant</span>
-                <span className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-amber-500"/> Multi-Region Redundancy</span>
+                <span className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-amber-500"/> 142 Global Edge PoPs</span>
+                <span className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-amber-500"/> Sub-20ms Avg Latency</span>
+                <span className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-amber-500"/> Zero SaaS Lock-in</span>
+              </m.div>
+
+              {/* === NEW: COMPETITIVE POSITIONING MICRO-STRIP === */}
+              <m.div variants={fadeUp} className="flex flex-wrap gap-3 mt-5">
+                {[
+                  "Faster than AWS CloudFront",
+                  "No Vercel lock-in",
+                  "Private ownership — you hold the keys",
+                ].map((label, i) => (
+                  <span key={i} className="flex items-center gap-1.5 text-[9px] font-mono font-bold uppercase tracking-widest px-3 py-1.5 rounded-full bg-slate-900/5 dark:bg-white/[0.04] border border-slate-300 dark:border-white/[0.08] text-slate-700 dark:text-slate-300">
+                    <span className="w-1 h-1 rounded-full bg-amber-500" />
+                    {label}
+                  </span>
+                ))}
               </m.div>
             </div>
             
             <m.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+              {/* === UPGRADED CTA WORDING === */}
               <Link href="/dashboard/initiate" className="group relative flex items-center justify-between gap-6 px-6 py-4 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 rounded-2xl hover:bg-slate-800 dark:hover:bg-amber-400 transition-all shadow-xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <div>
-                  <div className="text-[10px] font-mono uppercase tracking-widest font-bold opacity-80 mb-1">Unshakeable Foundation</div>
-                  <div className="text-sm font-black uppercase tracking-widest">Deploy My Infrastructure</div>
+                  <div className="text-[10px] font-mono uppercase tracking-widest font-bold opacity-80 mb-1">Application Only</div>
+                  <div className="text-sm font-black uppercase tracking-widest">Apply For Deployment</div>
                 </div>
                 <Power className="w-6 h-6" />
               </Link>
@@ -136,12 +193,12 @@ export default function GlobalNodesCommandCenter() {
           </m.header>
 
           {/* ========================================================================= */}
-          {/* LAYER 2: THE GLOBAL NODE RADAR (Interactive & Alive)                       */}
+          {/* LAYER 2: THE GLOBAL NODE RADAR                                             */}
           {/* ========================================================================= */}
-          <m.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="mb-16 md:mb-24">
+          <m.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="mb-20 md:mb-28">
             <m.div variants={fadeUp} className="w-full h-[500px] md:h-[650px] rounded-[2rem] md:rounded-[3rem] bg-slate-100/60 dark:bg-[#0A0F1C]/60 border border-slate-300 dark:border-white/10 backdrop-blur-3xl shadow-2xl relative overflow-hidden flex items-center justify-center">
               
-              {/* NEW: Shock Moment (System Boot Flash) */}
+              {/* Boot Flash */}
               <m.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: [0, 1, 0] }}
@@ -149,15 +206,31 @@ export default function GlobalNodesCommandCenter() {
                 className="absolute inset-0 bg-amber-500/10 dark:bg-amber-500/15 pointer-events-none z-50 mix-blend-overlay"
               />
 
+              {/* === LIVE SYSTEM INTELLIGENCE PANEL (top-left) === */}
               <div className="absolute top-6 md:top-10 left-6 md:left-10 z-20 pointer-events-none">
-                <div className="text-[10px] md:text-xs font-mono uppercase tracking-widest font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2">
+                <div className="text-[10px] md:text-xs font-mono uppercase tracking-widest font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-3">
                   <Activity className="w-4 h-4 text-amber-500" /> Live Routing Matrix
                 </div>
-                <div className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">14.2B+</div>
-                <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold">Packets / 24H</div>
+                <div className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tabular-nums">
+                  {(reqPerSec / 1000000).toFixed(2)}M
+                </div>
+                <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold mb-4">Req / min</div>
+                {/* Live sub-stats */}
+                <div className="flex flex-col gap-1.5">
+                  {[
+                    { label: "Active regions", value: `${regions}` },
+                    { label: "Bandwidth", value: `${bandwidth.toFixed(1)} GB/s` },
+                    { label: "Critical failures", value: `${incidents}`, highlight: true },
+                  ].map((stat, i) => (
+                    <div key={i} className="flex items-center gap-3 text-[9px] font-mono font-bold uppercase tracking-widest">
+                      <span className="text-slate-500">{stat.label}</span>
+                      <span className={stat.highlight ? "text-emerald-500" : "text-slate-900 dark:text-white tabular-nums"}>{stat.value}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* NEW: Floating Control Panel (The "Operator" Feel) */}
+              {/* Floating Control Panel */}
               <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 z-20 backdrop-blur-2xl bg-white/80 dark:bg-[#050B14]/80 border border-slate-300 dark:border-white/10 rounded-2xl p-5 shadow-xl w-[220px]">
                 <div className="text-[9px] font-mono uppercase tracking-widest font-bold text-slate-500 mb-4 flex items-center gap-2">
                   <Command className="w-3 h-3 text-amber-500" /> Node Controls
@@ -175,7 +248,7 @@ export default function GlobalNodesCommandCenter() {
                 </div>
               </div>
 
-              {/* NEW: Live Hover Intelligence Panel */}
+              {/* Live Hover Intelligence Panel */}
               <AnimatePresence>
                 {activeNode && (
                   <m.div
@@ -188,7 +261,6 @@ export default function GlobalNodesCommandCenter() {
                       <MapPin className="w-3 h-3" /> {activeNode.id}
                     </div>
                     <div className="text-sm font-black text-slate-900 dark:text-white mb-4">{activeNode.name}</div>
-                    
                     <div className="space-y-2">
                       <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest font-bold">
                         <span className="text-slate-500">Latency:</span>
@@ -209,10 +281,9 @@ export default function GlobalNodesCommandCenter() {
                 )}
               </AnimatePresence>
 
-              {/* MASSIVE SVG ORBITAL MAP WITH PARALLAX & HOVER */}
+              {/* ORBITAL MAP */}
               <m.div style={{ y: yParallax }} className="absolute inset-0 flex items-center justify-center opacity-90 scale-[1.2] md:scale-[1.05]">
                 <svg viewBox="0 0 1000 500" className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(245,158,11,0.15)]">
-                  {/* Abstract Grid/Map Base */}
                   <g className="stroke-slate-300 dark:stroke-slate-800" strokeWidth="1" strokeDasharray="4 8">
                     <line x1="100" y1="0" x2="100" y2="500" />
                     <line x1="300" y1="0" x2="300" y2="500" />
@@ -223,8 +294,7 @@ export default function GlobalNodesCommandCenter() {
                     <line x1="0" y1="250" x2="1000" y2="250" />
                     <line x1="0" y1="400" x2="1000" y2="400" />
                   </g>
-
-                  {/* Connection Lines (Animated Data Transfer) */}
+                  {/* Connection Lines */}
                   <g fill="none" stroke="#f59e0b" strokeWidth="1.5" opacity="0.6">
                     <path d="M 250 180 Q 400 50 550 150" strokeDasharray="15 30">
                       <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="15s" calcMode="linear" repeatCount="indefinite" />
@@ -239,35 +309,36 @@ export default function GlobalNodesCommandCenter() {
                       <animate attributeName="stroke-dashoffset" from="0" to="1000" dur="12s" calcMode="linear" repeatCount="indefinite" />
                     </path>
                   </g>
-
+                  {/* === NEW: THREAT INTERCEPTION PULSES (red pings being absorbed) === */}
+                  {[
+                    { cx: 250, cy: 180 }, { cx: 550, cy: 150 }, { cx: 850, cy: 180 },
+                  ].map((pt, i) => (
+                    <g key={`threat-${i}`} className="pointer-events-none">
+                      <circle cx={pt.cx - 40 + i * 10} cy={pt.cy - 20} r="3" fill="#ef4444" opacity="0.7">
+                        <animate attributeName="cx" values={`${pt.cx - 40 + i * 10};${pt.cx}`} dur={`${3 + i}s`} begin={`${i * 1.2}s`} repeatCount="indefinite" />
+                        <animate attributeName="cy" values={`${pt.cy - 20};${pt.cy}`} dur={`${3 + i}s`} begin={`${i * 1.2}s`} repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.7;0.7;0" dur={`${3 + i}s`} begin={`${i * 1.2}s`} repeatCount="indefinite" />
+                      </circle>
+                      <circle cx={pt.cx} cy={pt.cy} r="12" fill="none" stroke="#22c55e" strokeWidth="1.5" opacity="0">
+                        <animate attributeName="r" values="8;20" dur={`${3 + i}s`} begin={`${i * 1.2 + (2.8 + i * 0.9)}s`} repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.8;0" dur={`${3 + i}s`} begin={`${i * 1.2 + (2.8 + i * 0.9)}s`} repeatCount="indefinite" />
+                      </circle>
+                    </g>
+                  ))}
                   {/* Interactive Nodes */}
                   {GLOBAL_NODES.map((node, i) => (
-                    <g 
-                      key={node.id} 
-                      onMouseEnter={() => setActiveNode(node)} 
-                      onMouseLeave={() => setActiveNode(null)}
-                      className="cursor-pointer group"
-                    >
-                      {/* Invisible larger hit area */}
+                    <g key={node.id} onMouseEnter={() => setActiveNode(node)} onMouseLeave={() => setActiveNode(null)} className="cursor-pointer group">
                       <circle cx={node.cx} cy={node.cy} r="30" fill="transparent" />
-                      
-                      {/* Base Circle */}
                       <circle cx={node.cx} cy={node.cy} r={i === 1 ? "8" : "6"} className="fill-slate-900 dark:fill-white group-hover:fill-amber-500 transition-colors duration-300" />
-                      
-                      {/* Pulse Ring */}
                       <circle cx={node.cx} cy={node.cy} r={i === 1 ? "30" : "25"} fill="none" className="stroke-slate-900 dark:stroke-white group-hover:stroke-amber-500 transition-colors duration-300" strokeWidth="1">
                         <animate attributeName="r" values={i === 1 ? "8;50" : "6;40"} dur={`${2 + (i * 0.2)}s`} repeatCount="indefinite"/>
                         <animate attributeName="opacity" values="0.8;0" dur={`${2 + (i * 0.2)}s`} repeatCount="indefinite"/>
                       </circle>
-
-                      {/* Hover Glow */}
                       {activeNode?.id === node.id && (
                         <circle cx={node.cx} cy={node.cy} r="15" fill="#f59e0b" opacity="0.3" className="pointer-events-none" />
                       )}
                     </g>
                   ))}
-                  
-                  {/* Micro Data Point Pings */}
                   {[
                     {x: 200, y: 190}, {x: 280, y: 160}, {x: 520, y: 170}, 
                     {x: 580, y: 140}, {x: 820, y: 190}, {x: 870, y: 170}
@@ -282,9 +353,59 @@ export default function GlobalNodesCommandCenter() {
           </m.section>
 
           {/* ========================================================================= */}
-          {/* NEW SECTION: USE CASE CLARITY (Who Needs This?)                            */}
+          {/* === NEW: PROOF OF CONSEQUENCE — Fear Trigger ===                          */}
           {/* ========================================================================= */}
-          <m.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="mb-16 md:mb-24">
+          <m.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="mb-20 md:mb-28">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Without edge: consequences */}
+              <m.div variants={fadeUp} className="p-8 md:p-10 rounded-[2rem] bg-red-500/[0.04] border border-red-500/20 backdrop-blur-xl">
+                <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-red-500 mb-6 flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4" /> Without Sovereign Infrastructure
+                </div>
+                <div className="space-y-3">
+                  {[
+                    "Customers in Tokyo wait 4+ seconds to load your page",
+                    "Shared servers go down — your revenue goes down with them",
+                    "Every slow page loses you 7% in conversions per 100ms",
+                    "SaaS platforms change pricing — you pay or rebuild",
+                    "A single DDoS attack takes your entire operation offline",
+                    "Competitors on edge networks outrank you in search results",
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3 text-sm font-medium text-slate-600 dark:text-slate-400">
+                      <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </m.div>
+              {/* With Vaulltcore: imagination trigger */}
+              <m.div variants={fadeUp} className="p-8 md:p-10 rounded-[2rem] bg-emerald-500/[0.04] border border-emerald-500/20 backdrop-blur-xl">
+                <div className="text-[10px] font-mono font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-500 mb-6 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4" /> With Your Private Sovereign Edge
+                </div>
+                <div className="space-y-3">
+                  {[
+                    "Customers in Tokyo load your system in under 18ms — instantly",
+                    "Clients in New York experience zero delay, zero friction",
+                    "Payments and checkouts never fail — worldwide, always",
+                    "You own every line of code — no platform can hold you hostage",
+                    "300+ attack vectors blocked at the network perimeter automatically",
+                    "Google rewards sub-500ms sites — your authority compounds",
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3 text-sm font-medium text-slate-700 dark:text-slate-300">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </m.div>
+            </div>
+          </m.section>
+
+          {/* ========================================================================= */}
+          {/* USE CASE CLARITY                                                           */}
+          {/* ========================================================================= */}
+          <m.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="mb-20 md:mb-28">
              <div className="text-center mb-10 max-w-3xl mx-auto">
                 <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white mb-4">Architected for the Elite 1%</h2>
                 <p className="text-slate-600 dark:text-slate-400 font-medium text-sm md:text-base">We do not build basic websites. We build highly scalable, redundant infrastructure for operations that simply cannot afford to fail.</p>
@@ -307,19 +428,24 @@ export default function GlobalNodesCommandCenter() {
           </m.section>
 
           {/* ========================================================================= */}
-          {/* LAYER 3: PERSUASION & PROOF (Why Speed Matters)                            */}
+          {/* LAYER 3: PERSUASION & PROOF                                                */}
           {/* ========================================================================= */}
-          <m.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 mb-16 md:mb-24">
-             {/* Left Column: Metrics Grid */}
+          <m.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 mb-20 md:mb-28">
              <div className="lg:col-span-5 flex flex-col gap-4 md:gap-6">
                 <m.div variants={fadeUp} className="p-8 rounded-[2rem] bg-white/60 dark:bg-slate-900/40 border border-slate-300 dark:border-white/10 backdrop-blur-xl shadow-sm">
                    <div className="text-[10px] font-mono uppercase tracking-widest font-bold text-slate-500 mb-6 flex items-center gap-2">
-                     <Trophy className="w-4 h-4 text-amber-500" /> The Speed Advantage
+                     <Trophy className="w-4 h-4 text-amber-500" /> The Speed-Revenue Link
                    </div>
-                   <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Latency Kills Conversions.</h3>
-                   <p className="text-slate-600 dark:text-slate-400 font-medium mb-8">
-                     Every 100ms delay drops your conversion rate by 7%. Traditional servers force users to wait for data to cross oceans. We deploy your entire system to the edge—milliseconds away from your customer, no matter where they are.
+                   <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Latency Kills Revenue.</h3>
+                   <p className="text-slate-600 dark:text-slate-400 font-medium mb-6">
+                     Every 100ms delay drops conversion rate by 7%. Traditional servers force users to wait for data to cross oceans. We deploy your entire system to the edge — milliseconds from your customer, everywhere.
                    </p>
+                   {/* === HIGH-TICKET POSITIONING === */}
+                   <div className="p-4 rounded-xl bg-amber-500/5 border border-amber-500/15 mb-6">
+                     <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-600 dark:text-amber-500">
+                       What corporations spend six figures to build — delivered privately for founders and operators.
+                     </p>
+                   </div>
                    <div className="flex items-center gap-6 border-t border-slate-300 dark:border-slate-800 pt-6">
                       <div>
                         <div className="text-3xl font-black text-amber-600 dark:text-amber-500">+42%</div>
@@ -332,12 +458,10 @@ export default function GlobalNodesCommandCenter() {
                       </div>
                    </div>
                 </m.div>
-
-                {/* Regional Latency Table */}
                 <m.div variants={fadeUp} className="p-6 rounded-[2rem] bg-white/60 dark:bg-slate-900/40 border border-slate-300 dark:border-white/10 backdrop-blur-xl shadow-sm flex-1">
                   <div className="flex justify-between text-[10px] font-mono uppercase tracking-widest font-bold text-slate-500 border-b border-slate-300 dark:border-slate-800 pb-3 mb-3">
                     <span>Region</span>
-                    <span>TTFB (Time to First Byte)</span>
+                    <span>TTFB</span>
                   </div>
                   <div className="space-y-3">
                     {[
@@ -360,7 +484,7 @@ export default function GlobalNodesCommandCenter() {
                 </m.div>
              </div>
 
-             {/* Right Column: Live Terminal */}
+             {/* Live Terminal */}
              <m.div variants={fadeUp} className="lg:col-span-7 flex flex-col h-full min-h-[400px] rounded-[2rem] bg-slate-900 dark:bg-black/80 border border-slate-800 dark:border-white/10 backdrop-blur-3xl shadow-xl overflow-hidden relative">
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
                 <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/5">
@@ -375,8 +499,6 @@ export default function GlobalNodesCommandCenter() {
                 </div>
                 <div className="flex-1 p-6 font-mono text-[10px] md:text-xs flex flex-col justify-end gap-3 relative" ref={logAreaRef}>
                   <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-slate-900 dark:from-black to-transparent z-10 pointer-events-none" />
-                  
-                  {/* Initial Fake Logs */}
                   <div className="dash-log-item flex items-start gap-3 opacity-40">
                     <span className="dash-log-badge px-1.5 py-0.5 rounded border bg-slate-200 text-slate-900 dark:bg-white dark:text-[#050B14] border-slate-300 dark:border-white/20 font-bold tracking-wider text-[9px]">SECURE</span>
                     <span className="text-slate-500 shrink-0">14:02:11</span>
@@ -401,12 +523,12 @@ export default function GlobalNodesCommandCenter() {
           </m.section>
 
           {/* ========================================================================= */}
-          {/* LAYER 4: SYSTEM CAPABILITIES (Objection Handling)                          */}
+          {/* LAYER 4: SYSTEM CAPABILITIES                                               */}
           {/* ========================================================================= */}
-          <m.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="mb-16 md:mb-24">
+          <m.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="mb-20 md:mb-28">
              <div className="text-center mb-10 max-w-3xl mx-auto">
                 <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-slate-900 dark:text-white mb-4">Built for Sovereign Operators</h2>
-                <p className="text-slate-600 dark:text-slate-400 font-medium text-base md:text-lg">This is not shared hosting. This is dedicated, isolated edge compute designed to handle infinite scale and hostile traffic without breaking a sweat.</p>
+                <p className="text-slate-600 dark:text-slate-400 font-medium text-base md:text-lg">This is not shared hosting. Dedicated, isolated edge compute designed to handle infinite scale and hostile traffic without breaking a sweat.</p>
              </div>
              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                 {[
@@ -426,7 +548,7 @@ export default function GlobalNodesCommandCenter() {
           </m.section>
 
           {/* ========================================================================= */}
-          {/* FINAL CTA: TAKE CONTROL                                                    */}
+          {/* FINAL CTA                                                                  */}
           {/* ========================================================================= */}
           <m.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} className="mb-8 text-center relative z-20">
             <div className="p-10 md:p-20 rounded-[3rem] bg-slate-900 dark:bg-black border border-slate-800 dark:border-white/10 backdrop-blur-3xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6)] relative overflow-hidden group">
@@ -436,21 +558,36 @@ export default function GlobalNodesCommandCenter() {
               <div className="w-20 h-20 mx-auto rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-700">
                 <Command className="w-10 h-10 text-amber-500" />
               </div>
+
+              {/* === SCARCITY BEFORE CTA === */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-8">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-600 dark:text-amber-500">
+                  2 private build slots remaining · Application only
+                </span>
+              </div>
+
               <h2 className="text-4xl md:text-6xl lg:text-[5rem] font-black uppercase tracking-tighter text-white mb-6 leading-[0.95] drop-shadow-md">
-                Deploy My <br className="hidden md:block" /> Global Infrastructure.
+                Secure My <br className="hidden md:block" /> Global Infrastructure.
               </h2>
-              <p className="text-slate-400 text-lg md:text-xl font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
-                Take command of your digital real estate. High-performance architecture, zero SaaS lock-in, fully built and handed over to you.
+              <p className="text-slate-400 text-lg md:text-xl font-medium mb-4 max-w-2xl mx-auto leading-relaxed">
+                Your competitors are losing users while you stay online. Take command of your digital real estate — high-performance, zero SaaS lock-in, fully built and handed over to you.
+              </p>
+              <p className="text-slate-500 text-sm font-medium mb-12 max-w-xl mx-auto">
+                Enterprise-grade infrastructure without enterprise bureaucracy.
               </p>
               <Link href="/dashboard/initiate" className="inline-flex items-center gap-4 px-12 py-6 bg-amber-500 text-slate-950 font-black uppercase tracking-widest text-xs md:text-sm rounded-2xl hover:bg-amber-400 transition-all shadow-[0_15px_40px_rgba(245,158,11,0.3)] hover:shadow-[0_20px_50px_rgba(245,158,11,0.4)] hover:-translate-y-1">
-                <Power className="w-5 h-5" /> Take Control of My Network
+                <Power className="w-5 h-5" /> Apply For Private Deployment
               </Link>
+              <p className="mt-6 text-[10px] font-mono uppercase tracking-widest text-slate-600">
+                Reviewed personally · Not automated · Direct response within 48H
+              </p>
             </div>
           </m.section>
 
         </main>
 
-        {/* ─── ELITE FOOTER ────────────────────────────────────────────── */}
+        {/* ELITE FOOTER */}
         <footer className="border-t border-slate-300 dark:border-white/5 bg-white/60 dark:bg-slate-950/80 backdrop-blur-3xl pt-24 pb-12 relative z-10">
           <div className="max-w-[1600px] mx-auto px-6">
             <div className="flex flex-col items-center mb-16">
@@ -459,7 +596,11 @@ export default function GlobalNodesCommandCenter() {
                 <div className="w-3 h-3 bg-slate-900 dark:bg-amber-500 absolute bottom-0 right-0" />
               </div>
               <span className="text-3xl font-black uppercase tracking-widest text-slate-900 dark:text-white mb-2">Vaulltcore</span>
-              <span className="text-[10px] font-mono tracking-widest text-amber-700 dark:text-amber-500 font-bold uppercase">Sovereign DFY Systems</span>
+              <span className="text-[10px] font-mono tracking-widest text-amber-700 dark:text-amber-500 font-bold uppercase mb-3">Sovereign DFY Systems</span>
+              {/* === FOUNDER AUTHORITY LINE === */}
+              <span className="text-[10px] font-mono tracking-widest text-slate-500 dark:text-slate-500 uppercase">
+                Architected personally by <span className="text-slate-700 dark:text-slate-300 font-bold">Knowledge Rumhizha</span> · Harare, Zimbabwe
+              </span>
             </div>
 
             <div className="flex flex-wrap justify-center items-center gap-8 mb-16">
@@ -467,7 +608,7 @@ export default function GlobalNodesCommandCenter() {
                 build@vaulltcore.com
               </a>
               <Link href="/dashboard/initiate" className="text-[10px] md:text-xs font-mono font-bold tracking-widest uppercase text-slate-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
-                Initialize Protocol
+                Apply For Deployment
               </Link>
               <a href="https://vaulltcore.com" className="text-[10px] md:text-xs font-mono font-bold tracking-widest uppercase text-slate-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
                 vaulltcore.com
