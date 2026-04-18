@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-// 1. ADDED 'Variants' to the import list below
 import {
   LazyMotion, domAnimation, m, useScroll, useSpring, useReducedMotion, Variants
 } from "framer-motion";
@@ -10,38 +9,12 @@ import {
   Server, Network, Globe, Activity, Database, ShieldCheck,
   Workflow, Terminal, Code, ArrowRightLeft, Bot, Zap, Search,
   LayoutDashboard, CheckCircle2, DollarSign, ShieldAlert, LifeBuoy,
-  UserCog, FileJson, ServerCrash, ZapOff, Scale, Command, KeyRound,
-  Binary, TrendingUp, Cpu as Microchip, ArrowDown, Check, X, Wallet,
-  FileSignature, Unlock, Milestone, Gauge, TrendingDown, LineChart,
-  ArrowRight, Triangle, ArrowRightCircle, Hexagon, Users, Sparkles,
-  Shield, Lock, Cpu, BarChart3, Globe2, Layers
+  FileJson, ServerCrash, ZapOff, Scale, Command, KeyRound,
+  Binary, TrendingUp, Cpu as Microchip, ArrowDown, Check,
+  FileSignature, Unlock, Gauge, TrendingDown, LineChart,
+  ArrowRight, Triangle, ArrowRightCircle, Hexagon,
+  Shield, Lock, BarChart3
 } from "lucide-react";
-
-// ─── ANIMATION VARIANTS (FIXED FOR TYPESCRIPT) ──────────────────────────────
-
-// The 'as const' ensures the array is treated as a fixed Easing Tuple, not number[]
-const fade: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { 
-      duration: 0.8, 
-      ease: [0.23, 1, 0.32, 1] as const 
-    }
-  }
-};
-
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.2
-    }
-  }
-};
 
 // ─── DESIGN TOKENS ─────────────────────────────────────────────────────────
 // bg: #F8F5EE (Light) | #07080F (Dark)
@@ -545,12 +518,20 @@ export default function VaulltcorePage() {
 
   return (
     <LazyMotion features={domAnimation}>
-       {/* ── SCROLL PROGRESS BAR ── */}
-       {/* LEAVE THE REST OF YOUR CODE EXACTLY AS IT IS BELOW THIS LINE */}
+       {/* ── SKIP TO CONTENT (a11y + SEO) ── */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200]
+          focus:px-4 focus:py-2 focus:rounded-lg
+          focus:bg-[#D4AF37] focus:text-[#07080F]
+          focus:font-mono focus:font-bold focus:text-sm focus:tracking-widest focus:uppercase">
+        Skip to main content
+      </a>
+
       {/* ── SCROLL PROGRESS BAR ── */}
       <m.div
         style={{ scaleX }}
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#8B6914] via-[#D4AF37] to-[#F0D060] origin-left z-[100]"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#8B6914] via-[#D4AF37] to-[#F0D060] origin-left z-[100] will-change-transform"
         aria-hidden="true"
       />
 
@@ -575,7 +556,7 @@ export default function VaulltcorePage() {
         ))}
       </nav>
 
-      <main className="
+      <main id="main-content" className="
         relative min-h-screen
         bg-[#F8F5EE] dark:bg-[#07080F]
         text-neutral-900 dark:text-white
@@ -592,11 +573,11 @@ export default function VaulltcorePage() {
         {/* Gold glow top-left */}
         <div className="fixed top-[-15%] left-[-5%] w-[55%] h-[55%]
           bg-[#D4AF37]/5 dark:bg-[#D4AF37]/6
-          blur-[160px] rounded-full pointer-events-none z-0" aria-hidden="true" />
+          blur-[160px] rounded-full pointer-events-none z-0 will-change-transform" aria-hidden="true" />
         {/* Silver glow bottom-right */}
         <div className="fixed bottom-[-15%] right-[-5%] w-[45%] h-[50%]
           bg-[#A8B8C8]/5 dark:bg-[#A8B8C8]/4
-          blur-[160px] rounded-full pointer-events-none z-0" aria-hidden="true" />
+          blur-[160px] rounded-full pointer-events-none z-0 will-change-transform" aria-hidden="true" />
 
         <div className="relative z-10 max-w-[1600px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 pb-24">
 
@@ -604,11 +585,12 @@ export default function VaulltcorePage() {
               §1  HERO
           ══════════════════════════════════════════════════════════════ */}
           <m.header
-initial="hidden" animate="visible" variants={stagger}
-className="pt-12 md:pt-20 grid lg:grid-cols-[1fr_1fr] gap-16 items-center min-h-[90vh]"
->
-{/* Left: Copy */}
-<div>
+            aria-labelledby="hero-heading"
+            initial="hidden" animate="visible" variants={stagger}
+            className="pt-12 md:pt-20 grid lg:grid-cols-[1fr_1fr] gap-16 items-center min-h-[90vh]"
+          >
+            {/* Left: Copy */}
+            <div>
 {/* ── WEAPON 1: INEVITABILITY HOOK ── */}
 <m.div variants={fade} className="mb-6">
   <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-lg
@@ -641,7 +623,7 @@ Vaulltcore OS // Active Command
 </span>
 </m.div>
 
-<m.h1 variants={fade} className="text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter mb-6 uppercase leading-[1.0]">  
+            <m.h1 id="hero-heading" variants={fade} className="text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter mb-6 uppercase leading-[1.0]">
             Engineering{" "}  
             <br className="hidden md:block" />  
             <span className="text-[#B8892A] dark:text-[#D4AF37]">Digital</span>{" "}  
@@ -680,7 +662,7 @@ Vaulltcore OS // Active Command
                 <GlassCard className="p-1 mb-4" goldBorder>
                   <div className="relative">
                     <ScanFormDecoration />
-                    <form onSubmit={handleScan} className="flex items-stretch gap-2 p-2">
+                    <form onSubmit={handleScan} className="flex items-stretch gap-2 p-2" aria-label="Domain infrastructure audit">
                       <div className="flex-1 relative">
                         <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#B8892A] dark:text-[#D4AF37] opacity-60" />
                         <input
@@ -1871,10 +1853,10 @@ Vaulltcore OS // Active Command
                 className="text-[10px] font-mono font-bold tracking-widest uppercase text-neutral-400 dark:text-[#7B8794] hover:text-[#B8892A] dark:hover:text-[#D4AF37] transition-colors">
                 build@vaulltcore.com
               </a>
-              <Link href="/dashboard/initiate"
+              <a href="https://cal.com/vaulltcore" target="_blank" rel="noopener noreferrer"
                 className="text-[10px] font-mono font-bold tracking-widest uppercase text-neutral-400 dark:text-[#7B8794] hover:text-[#B8892A] dark:hover:text-[#D4AF37] transition-colors">
-                Initialize Audit
-              </Link>
+                Run Revenue Audit
+              </a>
               <a href="https://vaulltcore.com"
                 className="text-[10px] font-mono font-bold tracking-widest uppercase text-neutral-400 dark:text-[#7B8794] hover:text-[#B8892A] dark:hover:text-[#D4AF37] transition-colors">
                 vaulltcore.com
