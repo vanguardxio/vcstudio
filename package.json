@@ -1,6 +1,6 @@
 {
   "name": "vaulltcore-infrastructure-firm",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -65,6 +65,14 @@
     "@react-jvectormap/world": {
       "react": "^16.8.0 || ^17 || ^18 || ^19",
       "react-dom": "^16.8.0 || ^17 || ^18 || ^19"
+    },
+    "@react-email/components": {
+      "react": "^18.2.0 || ^19.0.0",
+      "react-dom": "^18.2.0 || ^19.0.0"
+    },
+    "@react-email/render": {
+      "react": "^18.2.0 || ^19.0.0",
+      "react-dom": "^18.2.0 || ^19.0.0"
     }
   }
 }
