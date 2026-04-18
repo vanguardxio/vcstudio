@@ -1,10 +1,4 @@
-This is the final purge. We are officially ripping out the last piece of the generic "TailAdmin" template and replacing it with the **Vaulltcore Sovereign Manifesto**. 
 
-A multi-million dollar infrastructure firm does not use a generic open-source `README.md`. Your repository documentation should read like a classified briefing document for an enterprise architecture deployment.
-
-Replace the entire contents of your `README.md` with this weaponized protocol:
-
-```markdown
 # VAULLTCORE — SOVEREIGN INFRASTRUCTURE SYSTEM
 
 **Vaulltcore** is an elite, private, Done-For-You (DFY) digital infrastructure firm. We engineer, deploy, and transfer complete sovereign digital real estate. Zero SaaS dependency. Zero third-party lock-in. 100% ownership.
