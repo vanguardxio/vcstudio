@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 // 1. ADDED 'Variants' to the import list below
 import {
@@ -527,6 +527,22 @@ export default function VaulltcorePage() {
     setTimeout(() => { setScanning(false); setScanDone(true); }, 2400);
   }
 
+  // ── PERFORMANCE: inject preconnect hints on mount ──
+  useEffect(() => {
+    const hints = [
+      { rel: "preconnect", href: "https://cal.com" },
+      { rel: "dns-prefetch", href: "https://cal.com" },
+    ];
+    hints.forEach(({ rel, href }) => {
+      if (!document.querySelector(`link[rel="${rel}"][href="${href}"]`)) {
+        const link = document.createElement("link");
+        link.rel = rel;
+        link.href = href;
+        document.head.appendChild(link);
+      }
+    });
+  }, []);
+
   return (
     <LazyMotion features={domAnimation}>
        {/* ── SCROLL PROGRESS BAR ── */}
@@ -743,6 +759,82 @@ Vaulltcore OS // Active Command
               <SovereignVaultSVG />
             </m.div>
           </m.header>
+
+          {/* ══════════════════════════════════════════════════════════════
+              §1b  PAIN AMPLIFIER — What your infrastructure is costing you
+          ══════════════════════════════════════════════════════════════ */}
+          <m.section
+            aria-label="Hidden Revenue Loss"
+            initial="hidden" whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }} variants={staggerContainer}
+            className="mt-16 mb-10"
+          >
+            <m.div variants={fade} className="text-center mb-8">
+              <p className="text-[10px] font-mono font-bold tracking-widest text-red-500 uppercase mb-3">
+                ⚠ Hidden Revenue Loss
+              </p>
+              <h2 className="text-xl md:text-2xl font-extrabold tracking-tight uppercase text-neutral-900 dark:text-white">
+                What your current infrastructure is costing you.
+              </h2>
+              <p className="text-xs font-mono text-neutral-500 dark:text-[#7B8794] mt-2">
+                Most businesses do not have a website problem. They have an infrastructure problem.
+              </p>
+            </m.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                {
+                  icon: Gauge,
+                  headline: "Slow sites silently kill conversions.",
+                  body: "Every 1-second delay reduces conversions by 7%. A 3-second load time costs you 21% of your revenue — every day, invisibly, before a single visitor bounces.",
+                  stat: "−7% conversions per second",
+                  statColor: "text-red-400",
+                },
+                {
+                  icon: Lock,
+                  headline: "SaaS platforms own your business.",
+                  body: "Webflow, Shopify, Wix — your site, your data, your customer relationships live on someone else's servers. They set the prices. They write the terms. You absorb the risk.",
+                  stat: "0% of the code is yours",
+                  statColor: "text-red-400",
+                },
+                {
+                  icon: TrendingDown,
+                  headline: "Poor infrastructure destroys rankings.",
+                  body: "Core Web Vitals are a direct Google ranking signal. Slow, rented infrastructure fails LCP, CLS, and FID benchmarks — suppressing your organic search visibility permanently.",
+                  stat: "Rankings lost daily",
+                  statColor: "text-red-400",
+                },
+              ].map((pain, i) => (
+                <m.div key={i} variants={fade}>
+                  <div className="relative h-full rounded-2xl overflow-hidden
+                    bg-[#07080F]/70 dark:bg-[#07080F]/90
+                    border border-red-500/15
+                    shadow-[inset_0_1px_0_rgba(239,68,68,0.08),0_4px_24px_rgba(0,0,0,0.3)]
+                    p-6 flex flex-col gap-4
+                    hover:border-red-500/25 transition-colors duration-300">
+                    {/* Red corner accent */}
+                    <div className="absolute top-0 left-0 w-12 h-12 pointer-events-none" aria-hidden="true">
+                      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-red-500/50 to-transparent" />
+                      <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-red-500/50 to-transparent" />
+                    </div>
+
+                    <pain.icon className="w-6 h-6 text-red-500/70 shrink-0" aria-hidden="true" />
+                    <div>
+                      <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-2 leading-snug">
+                        {pain.headline}
+                      </h3>
+                      <p className="text-xs font-mono text-[#7B8794] leading-relaxed">{pain.body}</p>
+                    </div>
+                    <div className="mt-auto pt-4 border-t border-red-500/10">
+                      <span className={`text-[10px] font-mono font-bold uppercase tracking-widest ${pain.statColor}`}>
+                        {pain.stat}
+                      </span>
+                    </div>
+                  </div>
+                </m.div>
+              ))}
+            </div>
+          </m.section>
 
           {/* ══════════════════════════════════════════════════════════════
               §2  STATUS STRIP
@@ -1157,6 +1249,59 @@ Vaulltcore OS // Active Command
                   ))}
                 </div>
               </div>
+
+              {/* ── SOCIAL PROOF: VERIFIED OUTCOMES ── */}
+              <m.div variants={fade} className="mt-16 pt-12 border-t border-black/[0.06] dark:border-white/[0.06]">
+                <div className="flex items-center gap-3 mb-10">
+                  <CheckCircle2 className="w-6 h-6 text-[#B8892A] dark:text-[#D4AF37]" aria-hidden="true" />
+                  <h3 className="text-xl md:text-2xl font-extrabold tracking-tight uppercase text-neutral-900 dark:text-white">
+                    Verified Outcomes
+                  </h3>
+                </div>
+                <div className="grid md:grid-cols-2 gap-5">
+                  {[
+                    {
+                      industry: "Security Services",
+                      challenge: "Slow public-facing site costing credibility and leads",
+                      result: "Load time cut from 2.4s to 480ms. Lighthouse 100/100 achieved.",
+                      quote: "Vaulltcore reduced our load time by 84% and the site feels like a different product entirely.",
+                      delta: "−84% load time",
+                      color: "text-[#D4AF37]", border: "border-[#D4AF37]/25",
+                    },
+                    {
+                      industry: "Energy & Petroleum",
+                      challenge: "No CI/CD pipeline, manual deploys, zero SEO foundation",
+                      result: "Automated 90-second push to production. Full technical SEO deployed.",
+                      quote: "We went from manual uploads to a fully automated pipeline. The infrastructure runs itself.",
+                      delta: "90s deploy cycles",
+                      color: "text-[#A8B8C8]", border: "border-[#A8B8C8]/25",
+                    },
+                  ].map((proof, i) => (
+                    <GlassCard key={i} className={`p-8 h-full ${proof.border}`}>
+                      <div className="flex items-center justify-between mb-6">
+                        <span className={`text-[9px] font-mono font-bold uppercase tracking-widest px-2 py-1 rounded-full border ${proof.color} border-current/30`}>
+                          {proof.industry}
+                        </span>
+                        <span className="flex items-center gap-1.5 text-[9px] font-mono font-bold uppercase tracking-widest text-emerald-400">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
+                          Verified
+                        </span>
+                      </div>
+                      <p className="text-[9px] font-mono uppercase tracking-widest text-neutral-400 dark:text-[#7B8794]/60 mb-1">Challenge</p>
+                      <p className="text-xs font-mono text-neutral-600 dark:text-[#7B8794] leading-relaxed mb-4">{proof.challenge}</p>
+                      <p className="text-[9px] font-mono uppercase tracking-widest text-neutral-400 dark:text-[#7B8794]/60 mb-1">Result</p>
+                      <p className="text-sm font-mono font-bold text-neutral-800 dark:text-white leading-relaxed mb-5">{proof.result}</p>
+                      <blockquote className="border-l-2 border-[#D4AF37]/40 pl-4 mb-5">
+                        <p className="text-xs font-mono text-neutral-500 dark:text-[#7B8794] leading-relaxed italic">"{proof.quote}"</p>
+                      </blockquote>
+                      <div className="pt-4 border-t border-black/[0.05] dark:border-white/[0.05]">
+                        <span className={`text-xs font-mono font-bold uppercase tracking-widest ${proof.color}`}>{proof.delta}</span>
+                      </div>
+                    </GlassCard>
+                  ))}
+                </div>
+              </m.div>
+
             </m.section>
 
             <VisualDivider />
@@ -1544,6 +1689,47 @@ Vaulltcore OS // Active Command
                 </GlassCard>
               </m.div>
             </m.section>
+
+            {/* ── URGENCY STRIP ── */}
+            <m.div
+              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.6 }}
+              className="mb-8"
+            >
+              <div className="relative overflow-hidden rounded-2xl
+                bg-[#07080F]/80 dark:bg-[#07080F]
+                border border-[#D4AF37]/20
+                px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                {/* Pulse glow */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/[0.03] via-transparent to-transparent pointer-events-none" aria-hidden="true" />
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#D4AF37]/60 via-[#D4AF37]/30 to-transparent rounded-l-2xl" aria-hidden="true" />
+
+                <div className="flex items-center gap-4 relative z-10">
+                  <div className="relative flex items-center justify-center w-8 h-8 shrink-0">
+                    <span className="absolute inline-flex w-full h-full rounded-full bg-amber-500/20 animate-ping" aria-hidden="true" />
+                    <span className="relative w-3 h-3 rounded-full bg-amber-500" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-white uppercase tracking-widest leading-snug">
+                      Limited build slots available this month.
+                    </p>
+                    <p className="text-xs font-mono text-[#7B8794] mt-0.5">
+                      We only take a controlled number of infrastructure builds per month to guarantee delivery quality.
+                    </p>
+                  </div>
+                </div>
+
+                <a href="https://cal.com/vaulltcore" target="_blank" rel="noopener noreferrer"
+                  className="relative z-10 shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-xl
+                    bg-[#D4AF37]/10 border border-[#D4AF37]/30
+                    text-[#B8892A] dark:text-[#D4AF37]
+                    font-mono font-bold text-xs tracking-widest uppercase
+                    hover:bg-[#D4AF37]/20 hover:border-[#D4AF37]/50 transition-all">
+                  Check Availability
+                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                </a>
+              </div>
+            </m.div>
 
             {/* §11  FINAL CTA */}
             <m.section
