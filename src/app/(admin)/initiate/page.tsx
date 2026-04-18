@@ -200,6 +200,17 @@ export default function EliteInitiateGateway() {
                     <div className="text-[9px] font-mono uppercase tracking-widest text-slate-500">Automated Actions</div>
                   </div>
                 </div>
+                {/* SOCIAL POSITIONING LINE */}
+                <p className="text-[9px] font-mono text-slate-500 dark:text-slate-500 uppercase tracking-widest leading-relaxed pl-1 border-l-2 border-amber-500/30">
+                  Selected by founders, operators, and enterprise teams requiring full infrastructure ownership.
+                </p>
+                {/* COST PRE-QUALIFIER */}
+                <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-amber-500/5 border border-amber-500/15">
+                  <Zap className="size-3 text-amber-500 shrink-0" aria-hidden="true" />
+                  <p className="text-[9px] font-mono uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                    Most engagements begin at <span className="text-amber-600 dark:text-amber-500 font-bold">$2,500+</span>
+                  </p>
+                </div>
               </div>
 
               <div className="space-y-4">
@@ -245,7 +256,22 @@ export default function EliteInitiateGateway() {
                             {systemStatus}
                           </p>
                         </div>
-                        <Server className="size-6 text-slate-300 dark:text-slate-700 hidden md:block" />
+                        <div className="flex flex-col items-start md:items-end gap-1.5">
+                          <Server className="size-6 text-slate-300 dark:text-slate-700 hidden md:block" aria-hidden="true" />
+                          {/* SECURITY PROOF MICRO-ROW */}
+                          <div className="flex items-center gap-3 flex-wrap">
+                            {[
+                              { icon: Lock, label: "256-bit encrypted" },
+                              { icon: ShieldAlert, label: "Zero third-party sharing" },
+                              { icon: Activity, label: "Private intake channel" },
+                            ].map((s, i) => (
+                              <span key={i} className="flex items-center gap-1 text-[8px] font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-500 font-bold">
+                                <s.icon className="size-2.5" aria-hidden="true" />
+                                {s.label}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -305,6 +331,27 @@ export default function EliteInitiateGateway() {
                       </div>
 
                       <div className="pt-4 border-t border-slate-200 dark:border-white/10">
+
+                        {/* WHAT HAPPENS NEXT */}
+                        <div className="mb-5 p-4 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06]">
+                          <p className="text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-amber-600 dark:text-amber-500 mb-3 flex items-center gap-1.5">
+                            <CheckCircle className="size-3" aria-hidden="true" />
+                            After submission you receive within 48 hours
+                          </p>
+                          <ol className="space-y-1.5" aria-label="Deliverables after submission">
+                            {[
+                              "Initial infrastructure feasibility review",
+                              "Bottleneck analysis of your current stack",
+                              "Deployment recommendation tailored to your scale",
+                            ].map((item, i) => (
+                              <li key={i} className="flex items-start gap-2 text-[9px] font-mono uppercase tracking-widest text-slate-600 dark:text-slate-400">
+                                <span className="text-amber-500 font-black shrink-0">{i + 1}.</span>
+                                {item}
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
+
                         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-5">
                           <div className="space-y-1 w-full sm:w-auto">
                             <div className="text-[10px] font-mono text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em]">System Compatibility</div>
@@ -345,6 +392,20 @@ export default function EliteInitiateGateway() {
                             )}
                           </div>
                         </button>
+
+                        {/* RISK REDUCTION + HUMAN REVIEW NOTE */}
+                        <div className="mt-4 space-y-2 text-center">
+                          <p className="text-[9px] font-mono uppercase tracking-widest text-slate-400 dark:text-slate-600 leading-relaxed">
+                            No obligation.{" "}
+                            <span className="text-slate-500 dark:text-slate-500">If we are not the right fit, we will tell you directly.</span>
+                          </p>
+                          <p className="text-[9px] font-mono uppercase tracking-widest text-slate-400 dark:text-slate-600 leading-relaxed border-t border-slate-100 dark:border-white/[0.04] pt-2">
+                            Every submission is reviewed by a{" "}
+                            <span className="text-amber-600 dark:text-amber-500 font-bold">senior infrastructure engineer</span>
+                            {" "}— never a sales rep or automated pipeline.
+                          </p>
+                        </div>
+
                       </div>
                     </div>
                   </m.form>
@@ -359,7 +420,13 @@ export default function EliteInitiateGateway() {
                       <CheckCircle2 className="size-8 text-emerald-500" />
                     </div>
                     <h2 className="text-2xl font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-500 mb-2">Payload Secured</h2>
-                    <div className="max-w-sm mx-auto mt-6 p-5 rounded-2xl bg-white/50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-left space-y-4">
+
+                    {/* PERSONAL ENGINEER NOTE */}
+                    <p className="text-[9px] font-mono uppercase tracking-widest text-slate-500 dark:text-slate-500 leading-relaxed max-w-xs mx-auto mb-6">
+                      A senior engineer will personally review your infrastructure request and contact you through your secure email address.
+                    </p>
+
+                    <div className="max-w-sm mx-auto p-5 rounded-2xl bg-white/50 dark:bg-black/40 border border-slate-200 dark:border-white/10 text-left space-y-4">
                       <div className="flex justify-between items-center border-b border-slate-200 dark:border-white/10 pb-3">
                         <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Audit ID</span>
                         <span className="text-xs font-mono font-black text-slate-900 dark:text-white">{auditId}</span>
@@ -368,9 +435,22 @@ export default function EliteInitiateGateway() {
                         <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Status</span>
                         <span className="text-[10px] font-mono font-bold text-amber-600 dark:text-amber-500 uppercase tracking-widest">Pending Analysis</span>
                       </div>
-                      <div className="flex flex-col gap-1">
-                        <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Next Step</span>
-                        <span className="text-[10px] font-mono font-bold text-slate-700 dark:text-slate-300 uppercase tracking-widest">Senior Engineer Review (48H SLA)</span>
+                      {/* WHAT HAPPENS NEXT STEPS */}
+                      <div className="space-y-2 pt-1">
+                        <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest block mb-2">What happens next</span>
+                        {[
+                          "Infrastructure feasibility review",
+                          "Bottleneck analysis of your stack",
+                          "Strategy recommendation prepared",
+                          "Direct response within 48H",
+                        ].map((step, i) => (
+                          <div key={i} className="flex items-center gap-2">
+                            <span className="w-4 h-4 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0">
+                              <span className="text-[7px] font-black text-amber-500">{i + 1}</span>
+                            </span>
+                            <span className="text-[9px] font-mono uppercase tracking-widest text-slate-600 dark:text-slate-400">{step}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </m.div>
