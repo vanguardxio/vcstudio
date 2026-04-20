@@ -276,7 +276,7 @@
 
 /* ApexCharts Overrides (Dark Mode Forced) */
 .apexcharts-legend-text {
-  @apply !text-gray-400 pl-5!;
+  @apply !text-gray-400 !pl-5;
 }
 .apexcharts-text {
   @apply !fill-gray-400;
@@ -310,7 +310,7 @@
 }
 .flatpickr-months .flatpickr-prev-month:hover svg,
 .flatpickr-months .flatpickr-next-month:hover svg {
-  @apply stroke-brand-500 fill-none!;
+  @apply stroke-brand-500 !fill-none;
 }
 .flatpickr-calendar.arrowTop:before,
 .flatpickr-calendar.arrowTop:after {
@@ -455,7 +455,7 @@ span.flatpickr-weekday,
   @apply gap-2;
 }
 .fc-button-group .fc-button {
-  @apply flex h-10 w-10 items-center justify-center !rounded-lg border border-gray-800 bg-transparent hover:border-gray-800 hover:bg-gray-900 focus:shadow-none active:!border-gray-800 active:!bg-transparent active:!shadow-none!;
+  @apply flex h-10 w-10 items-center justify-center !rounded-lg border border-gray-800 bg-transparent hover:border-gray-800 hover:bg-gray-900 focus:!shadow-none active:!border-gray-800 active:!bg-transparent active:!shadow-none;
 }
 .fc-button-group .fc-button.fc-prev-button:before {
   @apply inline-block mt-1;
@@ -478,7 +478,7 @@ span.flatpickr-weekday,
   @apply rounded-lg bg-gray-900 p-0.5;
 }
 .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk:last-child .fc-button {
-  @apply !h-auto !w-auto rounded-md !border-0 bg-transparent !px-5 !py-2 text-sm font-medium text-gray-400 hover:text-gray-300 focus:shadow-none!;
+  @apply !h-auto !w-auto rounded-md !border-0 bg-transparent !px-5 !py-2 text-sm font-medium text-gray-400 hover:text-gray-300 focus:!shadow-none;
 }
 .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk:last-child .fc-button.fc-button-active {
   @apply bg-gray-800 text-white;
@@ -524,7 +524,7 @@ span.flatpickr-weekday,
   @apply w-1 h-5 ml-0 mr-3 border-none rounded-sm;
 }
 .fc-event {
-  @apply focus:shadow-none;
+  @apply focus:!shadow-none;
 }
 .fc-daygrid-event.fc-event-start {
   @apply !ml-3;
