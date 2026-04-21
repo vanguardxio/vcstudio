@@ -186,7 +186,7 @@ export function SovereignVaultSVG() {
         </circle>
         <text x="20" y="13" fill="#22C55E" fontSize="6.5" fontFamily="monospace">SOVEREIGN ACTIVE</text>
         <text x="120" y="13" fill="#D4AF37" fontSize="6" fontFamily="monospace" opacity="0.5">|</text>
-        <text x="128" y="13" fill="#7B8794" fontSize="6" fontFamily="monospace">300+ EDGE NODES · UPTIME 99.99% · LIGHTHOUSE 100/100</text>
+        <text x="128" y="13" fill="#7B8794" fontSize="6" fontFamily="monospace">300+ EDGE NODES · UPTIME 99.99% · ZERO SAAS DEPENDENCY</text>
       </g>
     </svg>
   );
@@ -349,11 +349,11 @@ const performanceMetrics = [
 ];
 
 const infrastructureModules = [
-  { icon: Server,         title: "Infrastructure Design",   text: "Bespoke cloud architecture on Cloudflare, Vercel, and Netlify. Zero templates. Sub-1s load guaranteed." },
-  { icon: ArrowRightLeft, title: "Refactor & Migration",    text: "Legacy rescue. WordPress, Heroku, shared hosting — extracted and redeployed at edge. Zero downtime." },
-  { icon: Network,        title: "SEO Authority",           text: "Technical SEO at infrastructure level. Core Web Vitals perfection, edge sitemaps, schema markup that compounds." },
+  { icon: Server,         title: "Infrastructure Design",   text: "Bespoke cloud architecture on Cloudflare, Vercel, and edge networks. Zero templates. Built to your scale." },
+  { icon: ArrowRightLeft, title: "Refactor & Migration",    text: "Legacy rescue. WordPress, Heroku, shared hosting — extracted and redeployed at edge. Zero downtime protocol." },
+  { icon: Network,        title: "SEO Authority",           text: "Technical SEO at infrastructure level. Core Web Vitals improvement, edge sitemaps, schema markup that compounds." },
   { icon: Bot,            title: "AI Chatbot Setup",        text: "Custom RAG chatbots on client infrastructure. No per-message SaaS fees. Trained on client data. Fully owned." },
-  { icon: Activity,       title: "Knowledge Base",          text: "Self-hosted, edge-deployed knowledge bases. No Notion. No Confluence. Open-source, fully owned, full-text search." },
+  { icon: Activity,       title: "WhatsApp API Layer",      text: "Direct WhatsApp Business API integration. Instant response systems, lead pipelines, conversion automation. No SaaS middleman." },
   { icon: Globe,          title: "24/7 Automation",         text: "Automated monitoring, healing, backups, and CI/CD pipelines that run without human intervention." },
 ];
 
@@ -362,7 +362,7 @@ const caseStudies = [
     title: "Safeguard — Security Firm ZW",
     platform: "Legacy Stack → Cloudflare Pages + Next.js",
     client: "Commercial security services, Zimbabwe",
-    results: ["Page load: 2.4s → 480ms", "Lighthouse raised to 100/100", "WAF + Zero Trust security deployed"],
+    results: ["Page load: 2.4s → 480ms", "Performance score significantly improved", "WAF + Zero Trust security deployed"],
     color: "text-[#D4AF37]", border: "border-[#D4AF37]/30", hover: "hover:border-[#D4AF37]/60",
   },
   {
@@ -381,26 +381,13 @@ const transferProtocol = [
   { label: "Documentation",       desc: "Architecture diagrams, Ops Runbooks, deployment instructions — nothing held back." },
 ];
 
-const pricingTiers = [
-  {
-    title: "Foundation Package",    range: "$1,200 – $3,500",
-    desc: "Infrastructure design, DNS architecture, CI/CD pipeline, and complete Ops Runbook.",
-    border: "border-[#A8B8C8]/30", glow: "", badge: "SILVER", badgeClass: "text-[#A8B8C8] border-[#A8B8C8]/40",
-    priceColor: "text-[#A8B8C8]",
-  },
-  {
-    title: "Refactor & Migration",  range: "$1,800 – $8,000",
-    desc: "Full legacy-to-edge migration. Zero downtime. Before/after benchmarks. Old platform sunset.",
-    border: "border-[#D4AF37]/60", glow: "shadow-[0_0_40px_rgba(212,175,55,0.12)]",
-    badge: "GOLD · FEATURED", badgeClass: "text-[#D4AF37] border-[#D4AF37]/60",
-    priceColor: "text-[#D4AF37]", featured: true,
-  },
-  {
-    title: "Enterprise Engagement", range: "$8,000 – $25,000+",
-    desc: "Full-stack 5-service integrated deployment. Multi-environment. Complete ownership transfer.",
-    border: "border-[#D4AF37]/30", glow: "", badge: "PLATINUM",
-    badgeClass: "text-[#D4AF37] border-[#D4AF37]/40", priceColor: "text-[#D4AF37]",
-  },
+const investmentDrivers = [
+  "Current infrastructure condition and technical debt",
+  "Migration complexity and number of systems",
+  "SEO authority scope and indexing requirements",
+  "AI chatbot training depth and data volume",
+  "WhatsApp API and automation pipeline complexity",
+  "Number of environments (staging, production, DR)",
 ];
 
 const engagementSteps = [
@@ -641,11 +628,12 @@ Vaulltcore OS // Active Command
 </span>
 </m.div>
 
-<m.h1 variants={fade} className="text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter mb-6 uppercase leading-[1.0]">  
-            Engineering{" "}  
-            <br className="hidden md:block" />  
-            <span className="text-[#B8892A] dark:text-[#D4AF37]">Digital</span>{" "}  
-            <span className="text-neutral-900 dark:text-white">Sovereignty</span>  
+<m.h1 variants={fade} className="text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter mb-6 uppercase leading-[1.0]">
+            Your Infrastructure.{" "}
+            <br className="hidden md:block" />
+            <span className="text-[#B8892A] dark:text-[#D4AF37]">Your Revenue.</span>{" "}
+            <br className="hidden md:block" />
+            <span className="text-neutral-900 dark:text-white">Your Control.</span>
           </m.h1>  
 
           <m.div variants={fade}  
@@ -788,42 +776,41 @@ Vaulltcore OS // Active Command
                   headline: "Slow sites silently kill conversions.",
                   body: "Every 1-second delay reduces conversions by 7%. A 3-second load time costs you 21% of your revenue — every day, invisibly, before a single visitor bounces.",
                   stat: "−7% conversions per second",
-                  statColor: "text-red-400",
+                  statColor: "text-red-500 dark:text-red-400",
                 },
                 {
                   icon: Lock,
                   headline: "SaaS platforms own your business.",
                   body: "Webflow, Shopify, Wix — your site, your data, your customer relationships live on someone else's servers. They set the prices. They write the terms. You absorb the risk.",
                   stat: "0% of the code is yours",
-                  statColor: "text-red-400",
+                  statColor: "text-red-500 dark:text-red-400",
                 },
                 {
                   icon: TrendingDown,
                   headline: "Poor infrastructure destroys rankings.",
                   body: "Core Web Vitals are a direct Google ranking signal. Slow, rented infrastructure fails LCP, CLS, and FID benchmarks — suppressing your organic search visibility permanently.",
                   stat: "Rankings lost daily",
-                  statColor: "text-red-400",
+                  statColor: "text-red-500 dark:text-red-400",
                 },
               ].map((pain, i) => (
                 <m.div key={i} variants={fade}>
                   <div className="relative h-full rounded-2xl overflow-hidden
-                    bg-[#07080F]/70 dark:bg-[#07080F]/90
-                    border border-red-500/15
-                    shadow-[inset_0_1px_0_rgba(239,68,68,0.08),0_4px_24px_rgba(0,0,0,0.3)]
+                    bg-neutral-900 dark:bg-[#07080F]/90
+                    border border-red-500/20
+                    shadow-[inset_0_1px_0_rgba(239,68,68,0.08),0_4px_24px_rgba(0,0,0,0.15)]
+                    dark:shadow-[inset_0_1px_0_rgba(239,68,68,0.08),0_4px_24px_rgba(0,0,0,0.3)]
                     p-6 flex flex-col gap-4
-                    hover:border-red-500/25 transition-colors duration-300">
-                    {/* Red corner accent */}
+                    hover:border-red-500/30 transition-colors duration-300">
                     <div className="absolute top-0 left-0 w-12 h-12 pointer-events-none" aria-hidden="true">
                       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-red-500/50 to-transparent" />
                       <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-red-500/50 to-transparent" />
                     </div>
-
-                    <pain.icon className="w-6 h-6 text-red-500/70 shrink-0" aria-hidden="true" />
+                    <pain.icon className="w-6 h-6 text-red-400 shrink-0" aria-hidden="true" />
                     <div>
                       <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-2 leading-snug">
                         {pain.headline}
                       </h3>
-                      <p className="text-xs font-mono text-[#7B8794] leading-relaxed">{pain.body}</p>
+                      <p className="text-xs font-mono text-neutral-400 leading-relaxed">{pain.body}</p>
                     </div>
                     <div className="mt-auto pt-4 border-t border-red-500/10">
                       <span className={`text-[10px] font-mono font-bold uppercase tracking-widest ${pain.statColor}`}>
@@ -833,6 +820,69 @@ Vaulltcore OS // Active Command
                   </div>
                 </m.div>
               ))}
+            </div>
+          </m.section>
+
+          {/* ══════════════════════════════════════════════════════════════
+              §1c  WHO THIS IS FOR / NOT FOR
+          ══════════════════════════════════════════════════════════════ */}
+          <m.section
+            aria-label="Who This Is For"
+            initial="hidden" whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }} variants={staggerContainer}
+            className="mb-16 md:mb-20"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {/* For */}
+              <m.div variants={fade}>
+                <GlassCard className="p-8 h-full border-[#D4AF37]/25 dark:border-[#D4AF37]/20">
+                  <div className="flex items-center gap-2 mb-6">
+                    <CheckCircle2 className="w-5 h-5 text-[#B8892A] dark:text-[#D4AF37]" aria-hidden="true" />
+                    <h3 className="text-sm font-extrabold uppercase tracking-widest text-neutral-900 dark:text-white">Who This Is For</h3>
+                  </div>
+                  <ul className="space-y-4">
+                    {[
+                      { title: "Revenue-generating businesses", sub: "You have traction. Tech is now the ceiling, not the floor." },
+                      { title: "Founders escaping SaaS dependency", sub: "You're tired of paying to operate your own business." },
+                      { title: "Teams that want full ownership", sub: "Performance, control, and permanence — not a subscription." },
+                      { title: "Operators scaling past shared infrastructure", sub: "Your current stack wasn't built for where you're going." },
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-2 shrink-0" aria-hidden="true" />
+                        <div>
+                          <p className="text-sm font-bold text-neutral-900 dark:text-white leading-snug">{item.title}</p>
+                          <p className="text-xs font-mono text-neutral-500 dark:text-[#7B8794] mt-0.5">{item.sub}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </GlassCard>
+              </m.div>
+              {/* Not For */}
+              <m.div variants={fade}>
+                <GlassCard className="p-8 h-full border-red-200/40 dark:border-red-500/15">
+                  <div className="flex items-center gap-2 mb-6">
+                    <X className="w-5 h-5 text-red-500" aria-hidden="true" />
+                    <h3 className="text-sm font-extrabold uppercase tracking-widest text-neutral-900 dark:text-white">Who This Is Not For</h3>
+                  </div>
+                  <ul className="space-y-4">
+                    {[
+                      { title: "DIY builders", sub: "If you want to build it yourself, we're not the right fit." },
+                      { title: "Low-budget projects", sub: "Sovereign infrastructure is a serious investment. Minimum engagements start at $1,500." },
+                      { title: '"Just a website" requests', sub: "We build operating systems, not brochure sites." },
+                      { title: "Anyone not ready to own their stack", sub: "This only works if you're committed to ownership." },
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0" aria-hidden="true" />
+                        <div>
+                          <p className="text-sm font-bold text-neutral-900 dark:text-white leading-snug">{item.title}</p>
+                          <p className="text-xs font-mono text-neutral-500 dark:text-[#7B8794] mt-0.5">{item.sub}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </GlassCard>
+              </m.div>
             </div>
           </m.section>
 
@@ -1128,8 +1178,7 @@ Vaulltcore OS // Active Command
 
               <m.div variants={fade}>
                 <GlassCard className="relative overflow-hidden" hover={false}>
-                  {/* Dark background overlay */}
-                  <div className="absolute inset-0 bg-[#07080F]/60 dark:bg-[#07080F]/80 rounded-2xl pointer-events-none" aria-hidden="true" />
+                  <div className="absolute inset-0 bg-neutral-900/[0.92] dark:bg-[#07080F]/80 rounded-2xl pointer-events-none" aria-hidden="true" />
                   <div className="absolute top-0 left-0 w-[60%] h-full bg-[#D4AF37]/[0.03] blur-[120px] rounded-full pointer-events-none" aria-hidden="true" />
 
                   <div className="relative z-10 p-10 md:p-14">
@@ -1183,6 +1232,87 @@ Vaulltcore OS // Active Command
                   </div>
                 </GlassCard>
               </m.div>
+            </m.section>
+
+            <VisualDivider />
+
+            {/* ══════════════════════════════════════════════════════════════
+                THE 5-LAYER SYSTEM
+            ══════════════════════════════════════════════════════════════ */}
+            <m.section
+              aria-labelledby="five-layer-heading"
+              initial="hidden" whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }} variants={stagger}>
+
+              <SectionHeader
+                title="The 5-Layer System"
+                description="Not five separate services. One integrated revenue infrastructure — where every layer compounds the performance of the others."
+                icon={Layers}
+              />
+
+              <div className="space-y-4">
+                {[
+                  {
+                    num: "01",
+                    title: "Infrastructure Core",
+                    color: "#D4AF37",
+                    icon: Server,
+                    items: ["Edge deployment on Cloudflare or Vercel", "CI/CD pipelines — automated, zero-touch", "Performance optimisation for real-world load", "DNS architecture and security hardening"],
+                  },
+                  {
+                    num: "02",
+                    title: "Refactor & Migration",
+                    color: "#A8B8C8",
+                    icon: ArrowRightLeft,
+                    items: ["Extraction from SaaS platforms (WordPress, Webflow, Heroku)", "Zero-downtime migration protocol", "Legacy codebase rescue and modernisation", "Full regression testing before cutover"],
+                  },
+                  {
+                    num: "03",
+                    title: "SEO Authority Engine",
+                    color: "#D4AF37",
+                    icon: Network,
+                    items: ["Technical SEO at infrastructure level", "Core Web Vitals improvement and monitoring", "Edge sitemap and indexing architecture", "Structured data and schema markup"],
+                  },
+                  {
+                    num: "04",
+                    title: "AI Chatbot System",
+                    color: "#A8B8C8",
+                    icon: Bot,
+                    items: ["Custom RAG system trained on your business data", "Lead capture and qualification automation", "No per-message SaaS fees — fully owned", "Deployed on your infrastructure, not ours"],
+                  },
+                  {
+                    num: "05",
+                    title: "WhatsApp API Layer",
+                    color: "#22C55E",
+                    icon: Activity,
+                    items: ["Direct WhatsApp Business API — no middleware", "Instant response and drip sequences", "Conversion automation and pipeline triggers", "Customer communication fully owned and controlled"],
+                  },
+                ].map((layer, i) => (
+                  <m.div key={i} variants={fade}>
+                    <GlassCard className="overflow-hidden" goldBorder={i === 0 || i === 2}>
+                      <div className="flex flex-col md:flex-row">
+                        {/* Number + title */}
+                        <div className="md:w-64 shrink-0 p-6 md:p-8 border-b md:border-b-0 md:border-r border-black/[0.06] dark:border-white/[0.06] flex flex-row md:flex-col gap-4 items-center md:items-start">
+                          <div className="flex items-center gap-3">
+                            <span className="text-2xl font-extrabold font-mono tabular-nums" style={{ color: layer.color }}>{layer.num}</span>
+                            <layer.icon className="w-5 h-5" style={{ color: layer.color }} aria-hidden="true" />
+                          </div>
+                          <h3 className="text-sm font-extrabold uppercase tracking-widest text-neutral-900 dark:text-white">{layer.title}</h3>
+                        </div>
+                        {/* Items */}
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 p-6 md:p-8 flex-1">
+                          {layer.items.map((item, j) => (
+                            <li key={j} className="flex items-start gap-2.5 text-sm font-mono text-neutral-600 dark:text-[#7B8794]">
+                              <span className="w-1 h-1 rounded-full mt-2 shrink-0" style={{ background: layer.color }} aria-hidden="true" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </GlassCard>
+                  </m.div>
+                ))}
+              </div>
             </m.section>
 
             <VisualDivider />
@@ -1263,7 +1393,7 @@ Vaulltcore OS // Active Command
                     {
                       industry: "Security Services",
                       challenge: "Slow public-facing site costing credibility and leads",
-                      result: "Load time cut from 2.4s to 480ms. Lighthouse 100/100 achieved.",
+                      result: "Load time reduced from 2.4s to 480ms. Performance score significantly improved post-deployment.",
                       quote: "Vaulltcore reduced our load time by 84% and the site feels like a different product entirely.",
                       delta: "−84% load time",
                       color: "text-[#D4AF37]", border: "border-[#D4AF37]/25",
@@ -1512,74 +1642,152 @@ Vaulltcore OS // Active Command
 
             <VisualDivider />
 
-            {/* §9  PRICING */}
+            {/* ══════════════════════════════════════════════════════════════
+                DECISION CERTAINTY LAYER
+            ══════════════════════════════════════════════════════════════ */}
+            <m.section
+              aria-label="What happens after you submit"
+              initial="hidden" whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }} variants={stagger}>
+
+              <SectionHeader
+                title="What Happens After You Submit"
+                description="No ambiguity. No chasing. Every step is defined before you commit to anything."
+                icon={Workflow} align="center" id={sectionIds.audit}
+              />
+
+              <m.div variants={fade} className="max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-8">
+                  {[
+                    { num: "1", label: "You submit your domain", sub: "Takes 2 minutes. No commitment." },
+                    { num: "2", label: "Full audit delivered", sub: "Within 48 hours. Yours to keep." },
+                    { num: "3", label: "Infrastructure breakdown", sub: "We present what we found and what we'd build." },
+                    { num: "4", label: "Fixed investment number", sub: "Scope-locked. No surprises. No hourly billing." },
+                    { num: "5", label: "We execute", sub: "Build, migrate, test, transfer. Done." },
+                  ].map((step, i, arr) => (
+                    <div key={i} className="relative">
+                      {i < arr.length - 1 && (
+                        <div className="hidden lg:block absolute top-5 left-[calc(100%-4px)] w-full h-px bg-gradient-to-r from-[#D4AF37]/40 to-[#D4AF37]/10 z-10" aria-hidden="true" />
+                      )}
+                      <GlassCard className="p-5 h-full" goldBorder={i === 3}>
+                        <div className="w-8 h-8 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center mb-3">
+                          <span className="text-xs font-mono font-bold text-[#B8892A] dark:text-[#D4AF37]">{step.num}</span>
+                        </div>
+                        <p className="text-xs font-bold text-neutral-900 dark:text-white uppercase tracking-widest mb-1 leading-snug">{step.label}</p>
+                        <p className="text-[10px] font-mono text-neutral-500 dark:text-[#7B8794]">{step.sub}</p>
+                      </GlassCard>
+                    </div>
+                  ))}
+                </div>
+                {/* Key reassurance line */}
+                <GlassCard className="p-5" goldBorder>
+                  <div className="flex items-start gap-3">
+                    <Shield className="w-5 h-5 text-[#B8892A] dark:text-[#D4AF37] mt-0.5 shrink-0" aria-hidden="true" />
+                    <p className="text-sm font-mono text-neutral-700 dark:text-white font-semibold leading-relaxed">
+                      If we're not the right fit, you still keep the audit.{" "}
+                      <span className="text-neutral-500 dark:text-[#7B8794] font-normal">
+                        No obligation. If your project doesn't qualify, we tell you directly — and you walk away with a full technical assessment of your infrastructure at no cost.
+                      </span>
+                    </p>
+                  </div>
+                </GlassCard>
+              </m.div>
+            </m.section>
+
+            <VisualDivider />
+
+            {/* ══════════════════════════════════════════════════════════════
+                INVESTMENT SECTION
+            ══════════════════════════════════════════════════════════════ */}
             <m.section id={sectionIds.pricing}
               initial="hidden" whileInView="visible"
               viewport={{ once: true, margin: "-80px" }} variants={stagger}>
 
               <SectionHeader
-                title="Infrastructure Investment"
-                description="Transparent pricing. Every engagement scoped after the free audit. No surprises. No hidden fees."
+                title="Investment"
+                description="Final investment is determined after your infrastructure audit. You receive a fixed, scope-locked number — no surprises, no hourly billing, no scope creep."
                 icon={DollarSign} align="center" id={sectionIds.pricing}
               />
 
-              <div className="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto mb-12">
-                {pricingTiers.map((tier, i) => (
-                  <m.div key={i} variants={fade}
-                    className={tier.featured ? "md:-translate-y-3 md:scale-[1.02]" : ""}>
-                    <GlassCard className={`${tier.glow} h-full overflow-hidden ${tier.featured ? "border-[#D4AF37]/50 dark:border-[#D4AF37]/40" : tier.border}`}>
-                      {tier.featured && (
-                        <div className="h-1 bg-gradient-to-r from-[#8B6914] via-[#D4AF37] to-[#F0D060]" />
-                      )}
-                      <div className="p-8 flex flex-col h-full">
-                        <span className={`inline-block px-2.5 py-1 rounded-full text-[9px] font-mono font-bold tracking-widest uppercase border mb-4 ${tier.badgeClass} bg-transparent`}>
-                          {tier.badge}
-                        </span>
-                        <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500 dark:text-[#7B8794] mb-3">{tier.title}</h4>
-                        <p className={`text-2xl md:text-3xl font-extrabold font-mono tracking-tighter mb-5 ${tier.priceColor}`}>{tier.range}</p>
-                        <p className="text-sm font-mono text-neutral-500 dark:text-[#7B8794] leading-relaxed mb-8 flex-1">{tier.desc}</p>
-                        <Link href="/dashboard/initiate"
-                          className={`block text-center py-3 px-5 rounded-xl font-mono font-bold text-sm tracking-widest uppercase transition-all
-                            ${tier.featured
-                              ? "bg-gradient-to-r from-[#D4AF37] to-[#8B6914] text-white shadow-[0_4px_20px_rgba(212,175,55,0.35)] hover:shadow-[0_4px_30px_rgba(212,175,55,0.5)]"
-                              : "bg-neutral-100 dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.06] text-neutral-600 dark:text-[#A8B8C8] hover:border-[#D4AF37]/30"
-                            }`}>
-                          Initialize Engagement
-                        </Link>
+              <div className="max-w-5xl mx-auto space-y-6">
+
+                {/* Anchor + ranges */}
+                <m.div variants={fade}>
+                  <GlassCard className="overflow-hidden" goldBorder>
+                    <div className="h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" aria-hidden="true" />
+                    <div className="p-8 md:p-10">
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8 pb-8 border-b border-black/[0.06] dark:border-white/[0.06]">
+                        <div>
+                          <p className="text-[10px] font-mono font-bold tracking-widest text-[#B8892A] dark:text-[#D4AF37] uppercase mb-2">Sovereign Infrastructure System (5 Layers)</p>
+                          <p className="text-4xl md:text-5xl font-extrabold font-mono tracking-tighter text-neutral-900 dark:text-white">
+                            From <span className="text-[#B8892A] dark:text-[#D4AF37]">$1,500</span>
+                          </p>
+                        </div>
+                        <div className="text-sm font-mono text-neutral-500 dark:text-[#7B8794] md:text-right max-w-xs leading-relaxed">
+                          Exact scope and cost confirmed after your free audit. No number until we understand your system.
+                        </div>
+                      </div>
+
+                      {/* Ranges */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        <div className="p-5 rounded-xl bg-neutral-50 dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.05]">
+                          <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-400 dark:text-[#7B8794]/60 mb-2">Most builds</p>
+                          <p className="text-2xl font-extrabold font-mono text-[#B8892A] dark:text-[#D4AF37]">$3,000 – $12,000</p>
+                          <p className="text-xs font-mono text-neutral-500 dark:text-[#7B8794] mt-1">Standard migrations, infrastructure builds, single-environment deployments</p>
+                        </div>
+                        <div className="p-5 rounded-xl bg-neutral-50 dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.05]">
+                          <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-400 dark:text-[#7B8794]/60 mb-2">Advanced systems</p>
+                          <p className="text-2xl font-extrabold font-mono text-[#B8892A] dark:text-[#D4AF37]">$12,000 – $25,000+</p>
+                          <p className="text-xs font-mono text-neutral-500 dark:text-[#7B8794] mt-1">Multi-environment, AI + WhatsApp integration, full 5-layer sovereign build</p>
+                        </div>
+                      </div>
+
+                      {/* No hourly billing statement */}
+                      <p className="text-sm font-mono font-bold text-neutral-800 dark:text-white border-l-2 border-[#D4AF37]/50 pl-4">
+                        No hourly billing. No scope creep. One system. One number.
+                      </p>
+                    </div>
+                  </GlassCard>
+                </m.div>
+
+                {/* What determines investment */}
+                <div className="grid md:grid-cols-2 gap-5">
+                  <m.div variants={fade}>
+                    <GlassCard className="p-8 h-full">
+                      <div className="flex items-center gap-2 mb-5">
+                        <DollarSign className="w-5 h-5 text-[#B8892A] dark:text-[#D4AF37]" aria-hidden="true" />
+                        <h4 className="text-sm font-extrabold uppercase tracking-widest text-neutral-900 dark:text-white">What Determines Your Investment</h4>
+                      </div>
+                      <ul className="space-y-3">
+                        {investmentDrivers.map((driver, i) => (
+                          <li key={i} className="flex items-start gap-2.5 text-sm font-mono text-neutral-600 dark:text-[#7B8794]">
+                            <span className="w-1 h-1 rounded-full bg-[#D4AF37] mt-2 shrink-0" aria-hidden="true" />
+                            {driver}
+                          </li>
+                        ))}
+                      </ul>
+                    </GlassCard>
+                  </m.div>
+                  <m.div variants={fade}>
+                    <GlassCard className="p-8 h-full">
+                      <ShieldCheck className="w-7 h-7 text-[#B8892A] dark:text-[#D4AF37] mb-4" aria-hidden="true" />
+                      <h4 className="text-sm font-extrabold uppercase tracking-widest text-neutral-900 dark:text-white mb-3">Performance Guarantee</h4>
+                      <p className="text-sm font-mono text-neutral-500 dark:text-[#7B8794] leading-relaxed mb-6">
+                        Every engagement includes a written performance SLA. Measurable speed improvement,
+                        enterprise Zero Trust security, and full ownership transfer. If any agreed benchmark
+                        is not met — Vaulltcore revises at zero additional cost.
+                      </p>
+                      <div className="space-y-2 pt-4 border-t border-black/[0.06] dark:border-white/[0.06]">
+                        <p className="text-[10px] font-mono font-bold tracking-widest text-neutral-400 dark:text-[#7B8794]/60 uppercase mb-3">Optional retainer support</p>
+                        {["Maintenance Pro — $800/mo", "Growth Partner — $2,500/mo", "Enterprise Shield — $6,000/mo"].map((item, i) => (
+                          <div key={i} className="flex items-center gap-2 text-xs font-mono text-[#B8892A] dark:text-[#D4AF37] font-bold">
+                            <ArrowRight className="w-3 h-3 shrink-0" aria-hidden="true" /> {item}
+                          </div>
+                        ))}
                       </div>
                     </GlassCard>
                   </m.div>
-                ))}
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-5 max-w-6xl mx-auto">
-                <m.div variants={fade}>
-                  <GlassCard className="p-8 h-full">
-                    <ShieldCheck className="w-7 h-7 text-[#B8892A] dark:text-[#D4AF37] mb-4" />
-                    <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-800 dark:text-white mb-3">Performance Guarantee</h4>
-                    <p className="text-sm font-mono text-neutral-500 dark:text-[#7B8794] leading-relaxed">
-                      Every engagement includes a written performance SLA. Sub-1s global load time.
-                      100/100 Lighthouse score. Enterprise Zero Trust security. If any guarantee is not met —
-                      Vaulltcore revises at zero additional cost.
-                    </p>
-                  </GlassCard>
-                </m.div>
-                <m.div variants={fade}>
-                  <GlassCard className="p-8 h-full">
-                    <LifeBuoy className="w-7 h-7 text-[#B8892A] dark:text-[#D4AF37] mb-4" />
-                    <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-800 dark:text-white mb-3">Retainer Support Model</h4>
-                    <p className="text-sm font-mono text-neutral-500 dark:text-[#7B8794] leading-relaxed mb-4">
-                      Post-delivery, clients are never abandoned. Three support tiers available:
-                    </p>
-                    <ul className="space-y-2">
-                      {["Maintenance Pro — $800/mo", "Growth Partner — $2,500/mo", "Enterprise Shield — $6,000/mo"].map((item, i) => (
-                        <li key={i} className="flex items-center gap-2 text-xs font-mono text-[#B8892A] dark:text-[#D4AF37] font-bold">
-                          <ArrowRight className="w-3 h-3 shrink-0" /> {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </GlassCard>
-                </m.div>
+                </div>
               </div>
             </m.section>
 
@@ -1666,7 +1874,7 @@ Vaulltcore OS // Active Command
                             { icon: Code,         label: "Full codebase delivered",              sub: "Every line, every commit" },
                             { icon: FileSignature,label: "Complete documentation",               sub: "Runbooks, diagrams, configs" },
                             { icon: Database,     label: "Full database ownership",              sub: "With unrestricted admin access" },
-                            { icon: ShieldCheck,  label: "Written performance SLA",              sub: "Sub-500ms · Lighthouse 100" },
+                            { icon: ShieldCheck,  label: "Written performance SLA",              sub: "Measurable benchmarks · Agreed upfront" },
                           ].map((g, i) => (
                             <div key={i} className="flex items-start gap-3 p-4 rounded-xl
                               bg-[#D4AF37]/[0.04] border border-[#D4AF37]/15
@@ -1697,7 +1905,7 @@ Vaulltcore OS // Active Command
               className="mb-8"
             >
               <div className="relative overflow-hidden rounded-2xl
-                bg-[#07080F]/80 dark:bg-[#07080F]
+                bg-neutral-900 dark:bg-[#07080F]
                 border border-[#D4AF37]/20
                 px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
                 {/* Pulse glow */}
